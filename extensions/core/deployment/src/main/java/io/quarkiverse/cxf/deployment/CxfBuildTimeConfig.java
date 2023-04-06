@@ -8,7 +8,6 @@ import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
-import io.quarkus.util.GlobUtil;
 
 @ConfigRoot(name = "cxf", phase = ConfigPhase.BUILD_TIME)
 public class CxfBuildTimeConfig {
@@ -34,6 +33,12 @@ public class CxfBuildTimeConfig {
      */
     @ConfigItem
     public CodeGenConfig codegen;
+
+    /**
+     * todo
+     */
+    @ConfigItem
+    public WsdlGenConfig wsdlgen;
 
     @ConfigGroup
     public static class CodeGenConfig {
@@ -129,6 +134,70 @@ public class CxfBuildTimeConfig {
          * You need to add {@code io.quarkiverse.cxf:quarkus-cxf-xjc-plugins} dependency to your project to be able to
          * use {@code -xjc-Xboolean}, {@code -xjc-Xdv}, {@code -xjc-Xjavadoc}, {@code -xjc-Xpl}, {@code -xjc-Xts} or
          * {@code -xjc-Xwsdlextension}.
+         */
+        @ConfigItem
+        public Optional<List<String>> additionalParams;
+
+    }
+
+    @ConfigGroup
+    public static class WsdlGenConfig {
+
+        /**
+         * todo
+         */
+        @ConfigItem(name = "java2wsdl")
+        public Java2WsdlConfig java2wsdl;
+
+    }
+
+    @ConfigGroup
+    public static class Java2WsdlConfig {
+
+        /**
+         * todo
+         */
+        @ConfigItem(defaultValue = "false")
+        public boolean enabled;
+
+        /**
+         * todo
+         */
+        @ConfigItem(name = ConfigItem.PARENT)
+        public Wsdl2JavaParameterSet rootParameterSet;
+
+        /**
+         * todo
+         */
+        @ConfigItem(name = ConfigItem.PARENT)
+        public Map<String, Wsdl2JavaParameterSet> namedParameterSets;
+
+        /**
+         * todo
+         */
+        @ConfigItem(defaultValue = "target/WsdlGenTest")
+        public String outputDir;
+
+    }
+
+    @ConfigGroup
+    public static class Java2WsdlParameterSet {
+        public static final String DEFAULT_INCLUDES = "**.wsdl";
+
+        /**
+         * todo
+         */
+        @ConfigItem
+        public Optional<List<String>> includes;
+
+        /**
+         * todo
+         */
+        @ConfigItem
+        public Optional<List<String>> excludes;
+
+        /**
+         * todo
          */
         @ConfigItem
         public Optional<List<String>> additionalParams;
