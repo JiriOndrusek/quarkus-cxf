@@ -4,6 +4,7 @@ import org.apache.cxf.tools.java2ws.JavaToWS;
 
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 
 /**
@@ -12,7 +13,7 @@ import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 class Java2WsdlProcessor {
 
     @BuildStep
-    void java2wsdl(CxfBuildTimeConfig cxfBuildTimeConfig,
+    void java2wsdl(CxfBuildTimeConfig cxfBuildTimeConfig, BuildProducer<NativeImageResourceBuildItem> nativeResources,
             BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
 
         if (cxfBuildTimeConfig.wsdlgen.java2wsdl.enabled) {
@@ -29,6 +30,8 @@ class Java2WsdlProcessor {
                         //                        "org.jboss.eap.quickstarts.wscalculator.calculator.CalculatorService" };
                         "io.quarkiverse.cxf.deployment.wsdlgen.GreeterService" };
                 new JavaToWS(p).run();
+                nativeResources.produce(new NativeImageResourceBuildItem(
+                        cxfBuildTimeConfig.wsdlgen.java2wsdl.outputDir + "/GreeterService.wsdl"));
                 System.out.println("-----------------------------------");
             } catch (Exception e) {
                 throw new RuntimeException(new StringBuilder("Could not run wsdl2Java").toString(),
@@ -36,6 +39,10 @@ class Java2WsdlProcessor {
             }
         }
 
+        nativeResources.produce(new NativeImageResourceBuildItem(
+                cxfBuildTimeConfig.wsdlgen.java2wsdl.outputDir + "/GreeterService.wsdl"));
+
+        //todo remove, quickworkaround
         reflectiveClass.produce(ReflectiveClassBuildItem.builder(
                 "org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl",
                 "org.glassfish.jaxb.runtime.v2.runtime.JaxBeanInfo").methods().build());
