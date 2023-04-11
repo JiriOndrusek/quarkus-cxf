@@ -98,6 +98,94 @@ endif::add-copy-button-to-env-var[]
 |
 
 
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.enabled]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.enabled[quarkus.cxf.wsdlgen.java2wsdl.enabled]`
+
+[.description]
+--
+todo
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.includes]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.includes[quarkus.cxf.wsdlgen.java2wsdl.includes]`
+
+[.description]
+--
+A comma separated list of glob patterns for selecting WSDL files which should be processed with `wsdl2java` tool. The paths are relative to `src/main/resources` or `src/test/resources` directories of the current Maven or Gradle module. The glob syntax is specified in `io.quarkus.util.GlobUtil`. 
+Examples:  
+ - `calculator.wsdl,fruits.wsdl` will match `src/main/resources/calculator.wsdl` and `src/main/resources/fruits.wsdl` under the current Maven or Gradle module, but will not match anything like `src/main/resources/subdir/calculator.wsdl` 
+ - `my-++*++-service.wsdl` match `src/main/resources/my-foo-service.wsdl` and `src/main/resources/my-bar-service.wsdl` 
+ - `++**++.wsdl` will match any of the above  Note that file extensions other than `.wsdl` will work during normal builds, but changes in the matching files may get overseen in Quarkus dev mode. Always using the `.wsdl` extension is thus recommended. 
+The default value for `quarkus.cxf.codegen.wsdl2java.includes` is `++**++.wsdl` Named parameter sets, such as `quarkus.cxf.codegen.wsdl2java.my-name.includes` have no default and not specifying any `includes` value there will cause a build time error. 
+Make sure that the file sets selected by `quarkus.cxf.codegen.wsdl2java.includes` and `quarkus.cxf.codegen.wsdl2java.++[++whatever-name++]++.includes` do not overlap. 
+The files from `src/main/resources` selected by `includes` and `excludes` are automatically included in native image and therefore you do not need to include them via `quarkus.cxf.wsdl-path` (deprecated) or `quarkus.cxf.codegen.wsdl2java.includes/excludes`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_INCLUDES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_INCLUDES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.excludes]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.excludes[quarkus.cxf.wsdlgen.java2wsdl.excludes]`
+
+[.description]
+--
+A comma separated list of path patterns for selecting WSDL files which should *not* be processed with `wsdl2java` tool. The paths are relative to `src/main/resources` or `src/test/resources` directories of the current Maven or Gradle module. Same syntax as `includes`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_EXCLUDES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_EXCLUDES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.additional-params]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.additional-params[quarkus.cxf.wsdlgen.java2wsdl.additional-params]`
+
+[.description]
+--
+A comma separated list of additional command line parameters that should passed to CXF `wsdl2java` tool along with the files selected by `includes` and `excludes`. Example: `-wsdlLocation,classpath:wsdl/CalculatorService.wsdl`. Check link:https://cxf.apache.org/docs/wsdl-to-java.html[`wsdl2java` documentation] for all supported options. 
+You need to add `io.quarkiverse.cxf:quarkus-cxf-xjc-plugins` dependency to your project to be able to use `-xjc-Xboolean`, `-xjc-Xdv`, `-xjc-Xjavadoc`, `-xjc-Xpl`, `-xjc-Xts` or `-xjc-Xwsdlextension`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_ADDITIONAL_PARAMS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_ADDITIONAL_PARAMS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.output-dir]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.output-dir[quarkus.cxf.wsdlgen.java2wsdl.output-dir]`
+
+[.description]
+--
+todo
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_OUTPUT_DIR+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL_OUTPUT_DIR+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`target/WsdlGenTest`
+
+
 a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.codegen.wsdl2java.-named-parameter-sets-.includes]]`link:#quarkus-cxf_quarkus.cxf.codegen.wsdl2java.-named-parameter-sets-.includes[quarkus.cxf.codegen.wsdl2java."named-parameter-sets".includes]`
 
 [.description]
@@ -149,6 +237,62 @@ Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CODEGEN_WSDL2JAVA_
 endif::add-copy-button-to-env-var[]
 ifndef::add-copy-button-to-env-var[]
 Environment variable: `+++QUARKUS_CXF_CODEGEN_WSDL2JAVA__NAMED_PARAMETER_SETS__ADDITIONAL_PARAMS+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.includes]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.includes[quarkus.cxf.wsdlgen.java2wsdl."named-parameter-sets".includes]`
+
+[.description]
+--
+A comma separated list of glob patterns for selecting WSDL files which should be processed with `wsdl2java` tool. The paths are relative to `src/main/resources` or `src/test/resources` directories of the current Maven or Gradle module. The glob syntax is specified in `io.quarkus.util.GlobUtil`. 
+Examples:  
+ - `calculator.wsdl,fruits.wsdl` will match `src/main/resources/calculator.wsdl` and `src/main/resources/fruits.wsdl` under the current Maven or Gradle module, but will not match anything like `src/main/resources/subdir/calculator.wsdl` 
+ - `my-++*++-service.wsdl` match `src/main/resources/my-foo-service.wsdl` and `src/main/resources/my-bar-service.wsdl` 
+ - `++**++.wsdl` will match any of the above  Note that file extensions other than `.wsdl` will work during normal builds, but changes in the matching files may get overseen in Quarkus dev mode. Always using the `.wsdl` extension is thus recommended. 
+The default value for `quarkus.cxf.codegen.wsdl2java.includes` is `++**++.wsdl` Named parameter sets, such as `quarkus.cxf.codegen.wsdl2java.my-name.includes` have no default and not specifying any `includes` value there will cause a build time error. 
+Make sure that the file sets selected by `quarkus.cxf.codegen.wsdl2java.includes` and `quarkus.cxf.codegen.wsdl2java.++[++whatever-name++]++.includes` do not overlap. 
+The files from `src/main/resources` selected by `includes` and `excludes` are automatically included in native image and therefore you do not need to include them via `quarkus.cxf.wsdl-path` (deprecated) or `quarkus.cxf.codegen.wsdl2java.includes/excludes`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__INCLUDES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__INCLUDES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.excludes]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.excludes[quarkus.cxf.wsdlgen.java2wsdl."named-parameter-sets".excludes]`
+
+[.description]
+--
+A comma separated list of path patterns for selecting WSDL files which should *not* be processed with `wsdl2java` tool. The paths are relative to `src/main/resources` or `src/test/resources` directories of the current Maven or Gradle module. Same syntax as `includes`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__EXCLUDES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__EXCLUDES+++`
+endif::add-copy-button-to-env-var[]
+--|list of string 
+|
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.additional-params]]`link:#quarkus-cxf_quarkus.cxf.wsdlgen.java2wsdl.-named-parameter-sets-.additional-params[quarkus.cxf.wsdlgen.java2wsdl."named-parameter-sets".additional-params]`
+
+[.description]
+--
+A comma separated list of additional command line parameters that should passed to CXF `wsdl2java` tool along with the files selected by `includes` and `excludes`. Example: `-wsdlLocation,classpath:wsdl/CalculatorService.wsdl`. Check link:https://cxf.apache.org/docs/wsdl-to-java.html[`wsdl2java` documentation] for all supported options. 
+You need to add `io.quarkiverse.cxf:quarkus-cxf-xjc-plugins` dependency to your project to be able to use `-xjc-Xboolean`, `-xjc-Xdv`, `-xjc-Xjavadoc`, `-xjc-Xpl`, `-xjc-Xts` or `-xjc-Xwsdlextension`.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__ADDITIONAL_PARAMS+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_WSDLGEN_JAVA2WSDL__NAMED_PARAMETER_SETS__ADDITIONAL_PARAMS+++`
 endif::add-copy-button-to-env-var[]
 --|list of string 
 |
