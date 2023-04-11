@@ -157,14 +157,14 @@ public class CxfBuildTimeConfig {
         /**
          * todo
          */
-        @ConfigItem(defaultValue = "false")
+        @ConfigItem(defaultValue = "true")
         public boolean enabled;
 
         /**
          * todo
          */
         @ConfigItem(name = ConfigItem.PARENT)
-        public Wsdl2JavaParameterSet rootParameterSet;
+        public Java2WsdlParameterSet rootParameterSet;
 
         /**
          * todo
@@ -175,26 +175,26 @@ public class CxfBuildTimeConfig {
         /**
          * todo
          */
-        @ConfigItem(defaultValue = "target/WsdlGenTest")
+        @ConfigItem
         public String outputDir;
 
     }
 
     @ConfigGroup
     public static class Java2WsdlParameterSet {
-        public static final String DEFAULT_INCLUDES = "**.wsdl";
+        public static final String DEFAULT_INCLUDES = ".*";
 
         /**
          * todo
          */
         @ConfigItem
-        public Optional<List<String>> includes;
+        public Optional<String> includes;
 
         /**
          * todo
          */
         @ConfigItem
-        public Optional<List<String>> excludes;
+        public Optional<String> excludes;
 
         /**
          * todo

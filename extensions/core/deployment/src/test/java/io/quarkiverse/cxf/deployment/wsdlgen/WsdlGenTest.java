@@ -17,7 +17,8 @@ public class WsdlGenTest {
     @RegisterExtension
     public static final QuarkusUnitTest test = new QuarkusUnitTest()
             .setArchiveProducer(() -> ShrinkWrap.create(JavaArchive.class)
-                    .addClass(GreeterService.class))
+                    .addClass(GreeterService.class)
+                    .addClass(FruitWebService.class))
             .withConfigurationResource("application-cxf-wsdlgen.properties");
 
     @Test
