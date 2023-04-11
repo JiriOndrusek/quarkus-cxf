@@ -1,26 +1,5 @@
 package io.quarkiverse.cxf.deployment;
 
-import io.quarkiverse.cxf.deployment.codegen.Wsdl2JavaCodeGen;
-import io.quarkus.deployment.annotations.Produce;
-import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
-import io.quarkus.deployment.pkg.builditem.ArtifactResultBuildItem;
-import io.quarkus.paths.DirectoryPathTree;
-import io.quarkus.paths.PathFilter;
-import jakarta.jws.WebService;
-import org.apache.cxf.tools.common.ToolContext;
-import org.apache.cxf.tools.java2ws.JavaToWS;
-
-import io.quarkus.deployment.annotations.BuildProducer;
-import io.quarkus.deployment.annotations.BuildStep;
-import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
-import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
-import org.apache.cxf.tools.wsdlto.WSDLToJava;
-import org.jboss.jandex.AnnotationInstance;
-import org.jboss.jandex.AnnotationTarget;
-import org.jboss.jandex.DotName;
-import org.jboss.jandex.IndexView;
-import org.jboss.logging.Logger;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -31,8 +10,24 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.regex.Pattern;
+
+import jakarta.jws.WebService;
+
+import org.apache.cxf.tools.common.ToolContext;
+import org.apache.cxf.tools.java2ws.JavaToWS;
+import org.jboss.jandex.AnnotationInstance;
+import org.jboss.jandex.AnnotationTarget;
+import org.jboss.jandex.DotName;
+import org.jboss.jandex.IndexView;
+import org.jboss.logging.Logger;
+
+import io.quarkus.deployment.annotations.BuildProducer;
+import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
+import io.quarkus.deployment.pkg.builditem.ArtifactResultBuildItem;
 
 class Java2WsdlProcessor {
 
@@ -43,45 +38,45 @@ class Java2WsdlProcessor {
 
     @BuildStep
     void java2wsdl(CxfBuildTimeConfig cxfBuildTimeConfig, BuildProducer<NativeImageResourceBuildItem> resources,
-//                   BuildProducer<ArtifactResultBuildItem> artifactResultProducer, CombinedIndexBuildItem combinedIndex,
-                   BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
+            BuildProducer<ArtifactResultBuildItem> artifactResultProducer, CombinedIndexBuildItem combinedIndex,
+            BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
 
-//        IndexView index = combinedIndex.getIndex();
+        IndexView index = combinedIndex.getIndex();
 
         if (!cxfBuildTimeConfig.wsdlgen.java2wsdl.enabled) {
             log.info("Skipping " + this.getClass() + " invocation on user's request");
             return;
         }
 
-//        String[] services = index.getAnnotations(DotName.createSimple(WebService.class.getName()))
-//                .stream()
-//                .map(AnnotationInstance::target)
-//                .map(annotationTarget -> {
-//                    if (annotationTarget.kind().equals(AnnotationTarget.Kind.CLASS)) {
-//                        return annotationTarget.asClass();
-//                    }
-//                    return null;
-//                })
-//                .filter(ci -> ci != null)
-//                .map(classInfo -> classInfo.name().toString())
-//                .toArray(String[]::new);
+        String[] services = index.getAnnotations(DotName.createSimple(WebService.class.getName()))
+                .stream()
+                .map(AnnotationInstance::target)
+                .map(annotationTarget -> {
+                    if (annotationTarget.kind().equals(AnnotationTarget.Kind.CLASS)) {
+                        return annotationTarget.asClass();
+                    }
+                    return null;
+                })
+                .filter(ci -> ci != null)
+                .map(classInfo -> classInfo.name().toString())
+                .toArray(String[]::new);
 
-        String[] services = new String[] {"io.quarkiverse.cxf.deployment.wsdlgen.GreeterService"};
+        //        String[] services = new String[] { "io.quarkiverse.cxf.deployment.wsdlgen.GreeterService" };
 
-
-        final Path outDir = Path.of(cxfBuildTimeConfig.wsdlgen.java2wsdl.outputDir);
+        final Path outDir = Path.of(cxfBuildTimeConfig.wsdlgen.java2wsdl.outputDir.orElse("target"));
         final Map<String, String> processedClasses = new HashMap<>();
         boolean result = false;
-        result |= java2wsdl(services, cxfBuildTimeConfig.wsdlgen.java2wsdl.rootParameterSet, outDir, JAVA2WSDL_CONFIG_KEY_PREFIX, processedClasses);
+        result |= java2wsdl(services, cxfBuildTimeConfig.wsdlgen.java2wsdl.rootParameterSet, outDir,
+                JAVA2WSDL_CONFIG_KEY_PREFIX, processedClasses);
 
-     resources.produce(new NativeImageResourceBuildItem("target/WsdlGenTest/GreeterService.wsdl"));
-     reflectiveClass.produce(ReflectiveClassBuildItem.builder("org.glassfish.jaxb.core.marshaller.MinimumEscapeHandler")
-             .build());
+        resources.produce(new NativeImageResourceBuildItem("target/WsdlGenTest/GreeterService.wsdl"));
+        reflectiveClass.produce(ReflectiveClassBuildItem.builder("org.glassfish.jaxb.core.marshaller.MinimumEscapeHandler")
+                .build());
     }
 
-
-    static boolean java2wsdl(String[] serviceClasses, CxfBuildTimeConfig.Java2WsdlParameterSet params, Path outDir, String prefix,
-                             Map<String, String> processedClasses) {
+    static boolean java2wsdl(String[] serviceClasses, CxfBuildTimeConfig.Java2WsdlParameterSet params, Path outDir,
+            String prefix,
+            Map<String, String> processedClasses) {
 
         return scan(serviceClasses, params.includes, params.excludes, prefix, processedClasses, (String serviceClass) -> {
             final Java2WsdlParams java2WsdlParams = new Java2WsdlParams(serviceClass, outDir,
@@ -99,7 +94,6 @@ class Java2WsdlProcessor {
         });
     }
 
-
     public static boolean scan(
             String[] classes,
             Optional<String> includes,
@@ -109,10 +103,10 @@ class Java2WsdlProcessor {
             Consumer<String> serviceClassConsumer) {
 
         final String selectors = "    " + prefix + ".includes = "
-                + includes.get()
+                + (includes.isPresent() ? includes.get() : "")
                 + (excludes.isPresent()
-                ? "\n    " + prefix + ".excludes = " + excludes.get()
-                : "");
+                        ? "\n    " + prefix + ".excludes = " + excludes.get()
+                        : "");
 
         final Consumer<String> chainedConsumer = serviceClass -> {
             final String oldSelectors = processedClasses.get(serviceClass.toString());
@@ -126,7 +120,6 @@ class Java2WsdlProcessor {
             serviceClassConsumer.accept(serviceClass);
         };
 
-
         Optional<Pattern> includePatter = includes.map(p -> Pattern.compile(p, Pattern.CASE_INSENSITIVE));
         Optional<Pattern> excludePatter = excludes.map(p -> Pattern.compile(p, Pattern.CASE_INSENSITIVE));
 
@@ -138,16 +131,16 @@ class Java2WsdlProcessor {
         return !processedClasses.isEmpty();
     }
 
-    static Path absModuleRoot(final Path inputDir) {
-        if (inputDir.endsWith(SRC_MAIN_RESOURCES) || inputDir.endsWith(SRC_TEST_RESOURCES)) {
-            return inputDir.getParent().getParent().getParent();
-        } else {
-            return inputDir.getParent().getParent();
-            //todo
-//            throw new IllegalStateException(
-//                    "inputDir '" + inputDir + "' expected to end with " + SRC_MAIN_RESOURCES + " or " + SRC_TEST_RESOURCES);
-        }
-    }
+    //    static Path absModuleRoot(final Path inputDir) {
+    //        if (inputDir.endsWith(SRC_MAIN_RESOURCES) || inputDir.endsWith(SRC_TEST_RESOURCES)) {
+    //            return inputDir.getParent().getParent().getParent();
+    //        } else {
+    //            return inputDir.getParent().getParent();
+    //            //todo
+    //            //            throw new IllegalStateException(
+    //            //                    "inputDir '" + inputDir + "' expected to end with " + SRC_MAIN_RESOURCES + " or " + SRC_TEST_RESOURCES);
+    //        }
+    //    }
 
     static class Java2WsdlParams {
         private final String inputClass;
@@ -162,25 +155,25 @@ class Java2WsdlProcessor {
         }
 
         public StringBuilder appendLog(StringBuilder sb) {
-            final Path moduleRoot = absModuleRoot(outDir);
-            render(path -> moduleRoot.relativize(path).toString(), value -> sb.append(' ').append(value));
+            //            final Path moduleRoot = absModuleRoot(outDir);
+            render(value -> sb.append(' ').append(value));
             return sb;
         }
 
         public String[] toParameterArray() {
             final String[] result = new String[additionalParams.size() + 7];
             final AtomicInteger i = new AtomicInteger(0);
-            render(Path::toString, value -> result[i.getAndIncrement()] = value);
+            render(value -> result[i.getAndIncrement()] = value);
             return result;
         }
 
-        void render(Function<Path, String> pathTransformer, Consumer<String> paramConsumer) {
+        void render(/* Function<Path, String> pathTransformer, */Consumer<String> paramConsumer) {
             paramConsumer.accept("-wsdl");
             paramConsumer.accept("-V");
-            paramConsumer.accept( "-o");
-            paramConsumer.accept( inputClass.substring(inputClass.lastIndexOf(".")+1)+".wsdl");
+            paramConsumer.accept("-o");
+            paramConsumer.accept(inputClass.substring(inputClass.lastIndexOf(".") + 1) + ".wsdl");
             paramConsumer.accept("-d");
-            paramConsumer.accept(pathTransformer.apply(outDir));
+            paramConsumer.accept(outDir.toString());
             additionalParams.forEach(paramConsumer);
             paramConsumer.accept(inputClass);
         }
