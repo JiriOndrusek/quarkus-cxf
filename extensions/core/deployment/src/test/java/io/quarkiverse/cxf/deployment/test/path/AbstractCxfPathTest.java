@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import io.quarkiverse.cxf.annotation.CXFClient;
 import io.quarkiverse.cxf.deployment.test.Add;
 import io.quarkiverse.cxf.deployment.test.Delete;
-import io.quarkiverse.cxf.deployment.test.Fruit;
 import io.quarkiverse.cxf.deployment.test.FruitWebService;
 import io.quarkiverse.cxf.deployment.test.FruitWebServiceImpl;
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
 import io.quarkus.test.QuarkusUnitTest;
 import io.restassured.RestAssured;
 

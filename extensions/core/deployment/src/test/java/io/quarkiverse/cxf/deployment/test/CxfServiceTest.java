@@ -17,6 +17,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
 import io.quarkus.test.QuarkusUnitTest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;

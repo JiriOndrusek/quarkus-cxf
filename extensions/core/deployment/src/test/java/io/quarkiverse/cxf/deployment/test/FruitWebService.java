@@ -6,6 +6,8 @@ import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.xml.ws.RequestWrapper;
 
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
+
 @WebService
 public interface FruitWebService {
 

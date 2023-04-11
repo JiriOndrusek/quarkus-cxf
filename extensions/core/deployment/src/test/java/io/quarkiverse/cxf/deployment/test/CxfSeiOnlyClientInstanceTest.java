@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 
 import io.quarkiverse.cxf.CXFClientInfo;
 import io.quarkiverse.cxf.annotation.CXFClient;
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
 import io.quarkus.test.QuarkusUnitTest;
 
 public class CxfSeiOnlyClientInstanceTest {

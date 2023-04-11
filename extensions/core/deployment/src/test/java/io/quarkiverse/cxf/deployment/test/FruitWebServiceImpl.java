@@ -7,6 +7,8 @@ import java.util.Set;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
+
 @WebService(endpointInterface = "io.quarkiverse.cxf.deployment.test.FruitWebService", serviceName = "FruitWebService")
 public class FruitWebServiceImpl implements FruitWebService {
 

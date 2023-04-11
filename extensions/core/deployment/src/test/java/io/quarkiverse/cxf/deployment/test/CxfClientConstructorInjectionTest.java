@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+import io.quarkiverse.cxf.deployment.wsdlgen.Fruit;
 import io.quarkus.test.QuarkusUnitTest;
 
 public class CxfClientConstructorInjectionTest {

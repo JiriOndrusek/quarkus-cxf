@@ -1,4 +1,4 @@
-package io.quarkiverse.cxf.deployment.test;
+package io.quarkiverse.cxf.deployment.wsdlgen;
 
 import java.util.Objects;
 
