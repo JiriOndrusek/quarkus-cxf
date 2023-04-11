@@ -43,28 +43,30 @@ class Java2WsdlProcessor {
 
     @BuildStep
     void java2wsdl(CxfBuildTimeConfig cxfBuildTimeConfig, BuildProducer<NativeImageResourceBuildItem> resources,
-                   BuildProducer<ArtifactResultBuildItem> artifactResultProducer, CombinedIndexBuildItem combinedIndex,
+//                   BuildProducer<ArtifactResultBuildItem> artifactResultProducer, CombinedIndexBuildItem combinedIndex,
                    BuildProducer<ReflectiveClassBuildItem> reflectiveClass) {
 
-        IndexView index = combinedIndex.getIndex();
+//        IndexView index = combinedIndex.getIndex();
 
         if (!cxfBuildTimeConfig.wsdlgen.java2wsdl.enabled) {
             log.info("Skipping " + this.getClass() + " invocation on user's request");
             return;
         }
 
-        String[] services = index.getAnnotations(DotName.createSimple(WebService.class.getName()))
-                .stream()
-                .map(AnnotationInstance::target)
-                .map(annotationTarget -> {
-                    if (annotationTarget.kind().equals(AnnotationTarget.Kind.CLASS)) {
-                        return annotationTarget.asClass();
-                    }
-                    return null;
-                })
-                .filter(ci -> ci != null)
-                .map(classInfo -> classInfo.name().toString())
-                .toArray(String[]::new);
+//        String[] services = index.getAnnotations(DotName.createSimple(WebService.class.getName()))
+//                .stream()
+//                .map(AnnotationInstance::target)
+//                .map(annotationTarget -> {
+//                    if (annotationTarget.kind().equals(AnnotationTarget.Kind.CLASS)) {
+//                        return annotationTarget.asClass();
+//                    }
+//                    return null;
+//                })
+//                .filter(ci -> ci != null)
+//                .map(classInfo -> classInfo.name().toString())
+//                .toArray(String[]::new);
+
+        String[] services = new String[] {"io.quarkiverse.cxf.deployment.wsdlgen.GreeterService"};
 
 
         final Path outDir = Path.of(cxfBuildTimeConfig.wsdlgen.java2wsdl.outputDir);
