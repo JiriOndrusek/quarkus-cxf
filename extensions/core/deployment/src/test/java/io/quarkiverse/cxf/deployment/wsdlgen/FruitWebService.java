@@ -1,11 +1,12 @@
 package io.quarkiverse.cxf.deployment.wsdlgen;
 
-import io.quarkiverse.cxf.deployment.test.Fruit;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.xml.ws.RequestWrapper;
+
+import io.quarkiverse.cxf.deployment.test.Fruit;
 
 @WebService
 public interface FruitWebService {

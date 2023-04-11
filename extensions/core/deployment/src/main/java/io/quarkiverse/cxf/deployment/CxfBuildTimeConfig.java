@@ -176,7 +176,7 @@ public class CxfBuildTimeConfig {
          * todo
          */
         @ConfigItem
-        public String outputDir;
+        public Optional<String> outputDir;
 
     }
 
