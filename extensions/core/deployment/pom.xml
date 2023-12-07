@@ -44,6 +44,36 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-vertx-http-deployment</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>dedupe-mixin</artifactId>
+                    <groupId>org.mvnpm.at.open-wc</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>shadycss</artifactId>
+                    <groupId>org.mvnpm.at.webcomponents</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ssr-dom-shim</artifactId>
+                    <groupId>org.mvnpm.at.lit-labs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>reactive-element</artifactId>
+                    <groupId>org.mvnpm.at.lit</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>lit</artifactId>
+                    <groupId>org.mvnpm</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>lit-element</artifactId>
+                    <groupId>org.mvnpm</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>vaadin-development-mode-detector</artifactId>
+                    <groupId>org.mvnpm.at.vaadin</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -82,6 +112,18 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-tools-java2ws</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>ssr-dom-shim</artifactId>
+            <groupId>org.mvnpm.at.lit-labs</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>trusted-types</artifactId>
+            <groupId>org.mvnpm.at.types</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>reactive-element</artifactId>
+            <groupId>org.mvnpm.at.lit</groupId>
         </dependency>
 
         <dependency>
