@@ -1,0 +1,10 @@
+
+= Generating keystores
+
+Run following script `generate_certs.sh` in a folder with `cxfca-openssl.config`.
+
+Content of the script file:
+
+[source,bash]
+----
+include::./generate_certs.sh[]
