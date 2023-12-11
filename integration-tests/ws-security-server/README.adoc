@@ -1,7 +1,7 @@
 
 = Regenerate certificates and keystores
 
-Run following script `generate_certs.sh` in the same folder as `v3.ext` files exists and copy all files from the execution folder (not from `tmp`) into `src/main/resources`.
+Run following script `generate_certs.sh` and copy all files from the execution folder (not from `tmp`) into `src/main/resources`.
 
 Content of the script file:
 

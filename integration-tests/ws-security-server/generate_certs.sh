@@ -24,14 +24,14 @@ openssl genrsa -out tmp/bob.key 2048
 
 echo "*** Certificate authority ***"
 openssl genrsa -out tmp/cxfca.key 2048
-openssl req -x509 -new -subj '/O=apache.org/OU=eng (NOT FOR PRODUCTION)/CN=cxfca' -key tmp/cxfca.key -nodes -out tmp/cxfca.pem -days 10000 -extensions v3_req
+openssl req -x509 -new -subj '/O=apache.org/OU=eng (NOT FOR PRODUCTION)/CN=cxfca' -key tmp/cxfca.key -nodes -out tmp/cxfca.pem -days 10000
 openssl req -new -subj '/O=apache.org/OU=eng (NOT FOR PRODUCTION)/CN=cxfca' -x509 -key tmp/cxfca.key -days 10000 -out tmp/cxfca.crt
 
 echo "*** Generate certificates ***"
 openssl req -new -subj '/O=apache.org/OU=eng (NOT FOR PRODUCTION)/CN=alice' -key tmp/alice.key -out tmp/alice.csr
-openssl x509 -req -in tmp/alice.csr -extfile v3.ext -CA tmp/cxfca.pem -CAkey tmp/cxfca.key -CAcreateserial -days 10000 -out alice.crt
+openssl x509 -req -in tmp/alice.csr -CA tmp/cxfca.pem -CAkey tmp/cxfca.key -CAcreateserial -days 10000 -out alice.crt
 openssl req -new -subj '/O=apache.org/OU=eng (NOT FOR PRODUCTION)/CN=bob' -key tmp/bob.key -out tmp/bob.csr
-openssl x509 -req -in tmp/bob.csr -extfile v3.ext -CA tmp/cxfca.pem -CAkey tmp/cxfca.key -CAcreateserial -days 10000 -out bob.crt
+openssl x509 -req -in tmp/bob.csr -CA tmp/cxfca.pem -CAkey tmp/cxfca.key -CAcreateserial -days 10000 -out bob.crt
 
 echo "*** Export keystores ***"
 openssl pkcs12 -export -in alice.crt -inkey tmp/alice.key -certfile tmp/cxfca.crt -name "alice" -out alice.p12 -passout pass:password -keypbe aes-256-cbc -certpbe aes-256-cbc
