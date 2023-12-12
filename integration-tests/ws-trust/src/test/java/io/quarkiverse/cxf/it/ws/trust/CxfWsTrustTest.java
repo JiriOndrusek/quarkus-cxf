@@ -77,6 +77,8 @@ public class CxfWsTrustTest {
     @Test
     public void programmaticSts() throws Exception {
         Bus bus = BusFactory.newInstance().createBus();
+
+        new RestrictedAlgorithmSuiteLoader(bus);
         try {
             BusFactory.setThreadDefaultBus(bus);
 
