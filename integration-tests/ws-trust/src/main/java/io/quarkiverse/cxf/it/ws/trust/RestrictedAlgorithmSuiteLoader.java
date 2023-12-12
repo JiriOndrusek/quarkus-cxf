@@ -42,8 +42,9 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
 
         CustomAlgorithmSuite(SPConstants.SPVersion version, Policy nestedPolicy) {
             super(version, nestedPolicy);
-
+            System.out.println("********************* " + nestedPolicy.getName());
             for (String key : ALGORITHM_SUITE_TYPES.keySet()) {
+                System.out.println("******* " + key);
                 AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get(key);
                 AlgorithmSuiteType newAlgSuite =
                         new AlgorithmSuiteType(algSuite.getName(), algSuite.getDigest(),
