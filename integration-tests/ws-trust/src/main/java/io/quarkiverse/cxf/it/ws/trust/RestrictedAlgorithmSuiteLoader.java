@@ -25,6 +25,10 @@ import org.apache.wss4j.policy.SPConstants;
 import org.apache.wss4j.policy.model.AbstractSecurityAssertion;
 import org.apache.wss4j.policy.model.AlgorithmSuite;
 
+import java.security.Provider;
+import java.security.Security;
+import java.util.Set;
+
 /**
  * This class retrieves a custom AlgorithmSuite for use with restricted security policies
  */
@@ -41,23 +45,23 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
     private static class CustomAlgorithmSuite extends AlgorithmSuite {
 
         CustomAlgorithmSuite(SPConstants.SPVersion version, Policy nestedPolicy) {
+
             super(version, nestedPolicy);
-            System.out.println("********************* " + nestedPolicy.getName());
-            for (String key : ALGORITHM_SUITE_TYPES.keySet()) {
-                System.out.println("******* " + key);
-                AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get(key);
-                AlgorithmSuiteType newAlgSuite =
-                        new AlgorithmSuiteType(algSuite.getName(), algSuite.getDigest(),
-                                algSuite.getEncryption(), algSuite.getSymmetricKeyWrap(),
-                                algSuite.getAsymmetricKeyWrap(), algSuite.getEncryptionKeyDerivation(),
-                                algSuite.getSignatureKeyDerivation(),
-                                algSuite.getEncryptionDerivedKeyLength(),
-                                algSuite.getSignatureDerivedKeyLength(),
-                                algSuite.getMinimumSymmetricKeyLength(),
-                                algSuite.getMaximumSymmetricKeyLength(), 512,
-                                algSuite.getMaximumAsymmetricKeyLength());
-                ALGORITHM_SUITE_TYPES.put(key, newAlgSuite);
-            }
+
+            printProviders();
+
+
+            AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get("Basic256");
+            AlgorithmSuiteType newAlgSuite = new AlgorithmSuiteType(algSuite.getName(), algSuite.getDigest(),
+                    algSuite.getEncryption(), algSuite.getSymmetricKeyWrap(),
+                    "https://www.w3.org/2001/04/xmlenc#kw-aes256", algSuite.getEncryptionKeyDerivation(),
+                    algSuite.getSignatureKeyDerivation(),
+                    algSuite.getEncryptionDerivedKeyLength(),
+                    algSuite.getSignatureDerivedKeyLength(),
+                    algSuite.getMinimumSymmetricKeyLength(),
+                    algSuite.getMaximumSymmetricKeyLength(), 512,
+                    algSuite.getMaximumAsymmetricKeyLength());
+            ALGORITHM_SUITE_TYPES.put("Basic256", newAlgSuite);
         }
 
         @Override
@@ -65,5 +69,20 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
             return new CustomAlgorithmSuite(getVersion(), nestedPolicy);
         }
 
+    }
+
+    private static void printProviders() {
+        Provider [] providerList = Security.getProviders();
+        for (Provider provider : providerList)
+        {
+            System.out.println("Name: "  + provider.getName());
+            System.out.println("Information:\n" + provider.getInfo());
+
+            Set<Provider.Service> serviceList = provider.getServices();
+            for (Provider.Service service : serviceList)
+            {
+                System.out.println("Service Type: " + service.getType() + " Algorithm " + service.getAlgorithm());
+            }
+        }
     }
 }
