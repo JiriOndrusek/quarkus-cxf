@@ -26,9 +26,7 @@
                         </wsp:Policy>
                     </sp:RecipientToken>
                     <sp:AlgorithmSuite>
-                        <wsp:Policy>
-                            <sp:Basic256/>
-                        </wsp:Policy>
+                        s
                     </sp:AlgorithmSuite>
                     <sp:Layout>
                         <wsp:Policy>
