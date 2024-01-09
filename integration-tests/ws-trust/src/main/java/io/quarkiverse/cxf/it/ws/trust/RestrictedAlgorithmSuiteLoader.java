@@ -48,7 +48,7 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
 
             super(version, nestedPolicy);
 
-//                        printProviders();
+            //                        printProviders();
 
             AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get("Basic256");
             AlgorithmSuiteType newAlgSuite = new AlgorithmSuiteType(
