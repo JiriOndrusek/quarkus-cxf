@@ -53,13 +53,13 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
             AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get("Basic256");
             AlgorithmSuiteType newAlgSuite = new AlgorithmSuiteType(
                     algSuite.getName(),
-                    "http://www.w3.org/2001/04/xmlenc#sha256",
-                    "http://www.w3.org/2001/04/xmlenc#aes256-cbc", //Encryption(), should be ok
-                   // "http://www.w3.org/2001/04/xmlenc#kw-aes256",
-                    SPConstants.KW_TRIPLE_DES,
-                    "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p",
-                    "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256",
-                    "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256",
+                    algSuite.getDigest(),
+                    algSuite.getEncryption(),
+                    algSuite.getSymmetricKeyWrap(),
+                    //algSuite.getAsymmetricKeyWrap(),
+                    "http://www.w3.org/2001/04/xmlenc#rsa-1_5",
+                    algSuite.getEncryptionKeyDerivation(),
+                    algSuite.getEncryptionKeyDerivation(),
                     algSuite.getEncryptionDerivedKeyLength(),
                     algSuite.getSignatureDerivedKeyLength(),
                     algSuite.getMinimumSymmetricKeyLength(),
