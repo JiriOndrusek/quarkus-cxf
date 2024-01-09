@@ -64,7 +64,7 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
                     algSuite.getMinimumSymmetricKeyLength(),
                     algSuite.getMaximumSymmetricKeyLength(), 512,
                     algSuite.getMaximumAsymmetricKeyLength());
-            ALGORITHM_SUITE_TYPES.put("Basic256", newAlgSuite);
+            ALGORITHM_SUITE_TYPES.put("Basic256Sha256Rsa15", newAlgSuite);
         }
 
         @Override
