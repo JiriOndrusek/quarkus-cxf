@@ -50,14 +50,13 @@ public class RestrictedAlgorithmSuiteLoader implements AlgorithmSuiteLoader {
 
             //                        printProviders();
 
-            AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get("Basic256");
+            AlgorithmSuiteType algSuite = ALGORITHM_SUITE_TYPES.get("Basic256Sha256Rsa15");
             AlgorithmSuiteType newAlgSuite = new AlgorithmSuiteType(
                     algSuite.getName(),
                     algSuite.getDigest(),
-                    algSuite.getEncryption(),
+                    "http://www.w3.org/2009/xmlenc11#aes192-gcm",
                     algSuite.getSymmetricKeyWrap(),
-                    //algSuite.getAsymmetricKeyWrap(),
-                    "http://www.w3.org/2001/04/xmlenc#rsa-1_5",
+                    algSuite.getAsymmetricKeyWrap(),
                     algSuite.getEncryptionKeyDerivation(),
                     algSuite.getEncryptionKeyDerivation(),
                     algSuite.getEncryptionDerivedKeyLength(),
