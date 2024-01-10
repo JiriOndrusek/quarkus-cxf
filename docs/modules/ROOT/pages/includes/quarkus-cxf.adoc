@@ -498,6 +498,57 @@ endif::add-copy-button-to-env-var[]
 |
 
 
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.fips.enabled]]`link:#quarkus-cxf_quarkus.cxf.fips.enabled[quarkus.cxf.fips.enabled]`
+
+
+[.description]
+--
+todo
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_FIPS_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_FIPS_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false `
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.fips.customizedalgsuite]]`link:#quarkus-cxf_quarkus.cxf.fips.customizedalgsuite[quarkus.cxf.fips.customizedAlgSuite]`
+
+
+[.description]
+--
+todo
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_FIPS_CUSTOMIZEDALGSUITE+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_FIPS_CUSTOMIZEDALGSUITE+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`Basic256Sha256Rsa15`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.fips.encryption]]`link:#quarkus-cxf_quarkus.cxf.fips.encryption[quarkus.cxf.fips.encryption]`
+
+
+[.description]
+--
+todo
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_FIPS_ENCRYPTION+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_FIPS_ENCRYPTION+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://www.w3.org/2009/xmlenc11#aes256-gcm`
+
+
 a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.path]]`link:#quarkus-cxf_quarkus.cxf.path[quarkus.cxf.path]`
 
 

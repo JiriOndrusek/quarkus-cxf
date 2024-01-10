@@ -35,7 +35,6 @@ public class CxfWsTrustTest {
      */
     @Test
     void stsWsdl() {
-        new RestrictedAlgorithmSuiteLoader(bus);
         RestAssuredConfig config = RestAssured.config();
         config.getXmlConfig().namespaceAware(false);
         given()
@@ -52,7 +51,6 @@ public class CxfWsTrustTest {
 
     @Test
     void wsdl() {
-        new RestrictedAlgorithmSuiteLoader(bus);
         RestAssuredConfig config = RestAssured.config();
         config.getXmlConfig().namespaceAware(false);
         given()
@@ -80,7 +78,6 @@ public class CxfWsTrustTest {
     @Test
     public void programmaticSts() throws Exception {
 
-        new RestrictedAlgorithmSuiteLoader(bus);
         BusFactory.setThreadDefaultBus(bus);
 
         final QName serviceName = new QName("https://quarkiverse.github.io/quarkiverse-docs/quarkus-cxf/test/ws-trust",

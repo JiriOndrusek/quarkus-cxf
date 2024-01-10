@@ -445,4 +445,34 @@ public interface CxfBuildTimeConfig {
         }
     }
 
+    /**
+     * test
+     *
+     * @return
+     */
+    @WithName("fips")
+    public FipsConfig fips();
+
+    @ConfigGroup
+    public interface FipsConfig {
+
+        /**
+         * todo
+         */
+        @WithDefault("false ")
+        public boolean enabled();
+
+        /**
+         * todo
+         */
+        @WithName("customizedAlgSuite")
+        @WithDefault("Basic256Sha256Rsa15")
+        public String algSuite();
+
+        /**
+         * todo
+         */
+        @WithDefault("http://www.w3.org/2009/xmlenc11#aes256-gcm")
+        public Optional<String> encryption();
+    }
 }
