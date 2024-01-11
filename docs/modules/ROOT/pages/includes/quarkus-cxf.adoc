@@ -498,6 +498,244 @@ endif::add-copy-button-to-env-var[]
 |
 
 
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.enabled]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.enabled[quarkus.cxf.customizedAlgorithmSuite.enabled]`
+
+
+[.description]
+--
+If true fully customizable algorithm suite is loaded into the cxf bus with the identifier _CustomizedAlgorithmSuite_ Suggested usage is for scenarios for the non-standard security requirements (like FIPS).
+
+Default values are derived from the algorithm suite _Basic256Sha256Rsa15_ and are FIPS compliant.
+
+ - Asymmetric Signature: http://www.w3.org/2001/04/xmldsig-more++#++rsa-sha256
+ - Symmetric Signature: http://www.w3.org/2000/09/xmldsig++#++hmac-sha1
+ - Digest Algorithm: http://www.w3.org/2001/04/xmlenc++#++sha256
+ - Encryption Algorithm: http://www.w3.org/2009/xmlenc11++#++aes256-gcm (differs from _Basic256Sha256Rsa15_)
+ - Symmetric Key Encryption Algorithm: http://www.w3.org/2001/04/xmlenc++#++kw-aes256
+ - Asymmetric Key Encryption Algorithm: http://www.w3.org/2001/04/xmlenc++#++rsa-1_5
+ - Encryption Key Derivation: http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1
+ - Signature Key Derivation: http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1
+ - Encryption Derived Key Length: 256
+ - Signature Derived Key Length: 192
+ - Minimum Symmetric Key Length: 256
+ - Maximum Symmetric Key Length: 1024
+ - Minimum Asymmetric Key Length: 256
+ - Maximum Asymmetric Key Length: 4096
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--|boolean 
+|`false`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.digest-algorithm]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.digest-algorithm[quarkus.cxf.customizedAlgorithmSuite.digest-algorithm]`
+
+
+[.description]
+--
+Digest Algorithm.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_DIGEST_ALGORITHM+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_DIGEST_ALGORITHM+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://www.w3.org/2001/04/xmlenc#sha256`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-algorithm]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-algorithm[quarkus.cxf.customizedAlgorithmSuite.encryption-algorithm]`
+
+
+[.description]
+--
+Encryption Algorithm.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_ALGORITHM+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_ALGORITHM+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://www.w3.org/2009/xmlenc11#aes256-gcm`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.symmetric-key-encryption-algorithm]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.symmetric-key-encryption-algorithm[quarkus.cxf.customizedAlgorithmSuite.symmetric-key-encryption-algorithm]`
+
+
+[.description]
+--
+Symmetric Key Encryption Algorithm.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SYMMETRIC_KEY_ENCRYPTION_ALGORITHM+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SYMMETRIC_KEY_ENCRYPTION_ALGORITHM+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://www.w3.org/2001/04/xmlenc#kw-aes256`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.asymmetric-key-encryption-algorithm]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.asymmetric-key-encryption-algorithm[quarkus.cxf.customizedAlgorithmSuite.asymmetric-key-encryption-algorithm]`
+
+
+[.description]
+--
+Asymmetric Key Encryption Algorithm.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ASYMMETRIC_KEY_ENCRYPTION_ALGORITHM+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ASYMMETRIC_KEY_ENCRYPTION_ALGORITHM+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://www.w3.org/2001/04/xmlenc#rsa-1_5`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-key-derivation]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-key-derivation[quarkus.cxf.customizedAlgorithmSuite.encryption-key-derivation]`
+
+
+[.description]
+--
+Encryption Key Derivation.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_KEY_DERIVATION+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_KEY_DERIVATION+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.signature-key-derivation]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.signature-key-derivation[quarkus.cxf.customizedAlgorithmSuite.signature-key-derivation]`
+
+
+[.description]
+--
+Signature Key Derivation.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SIGNATURE_KEY_DERIVATION+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SIGNATURE_KEY_DERIVATION+++`
+endif::add-copy-button-to-env-var[]
+--|string 
+|`http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-derived-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.encryption-derived-key-length[quarkus.cxf.customizedAlgorithmSuite.encryption-derived-key-length]`
+
+
+[.description]
+--
+Encryption Derived Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_DERIVED_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_ENCRYPTION_DERIVED_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`256`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.signature-derived-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.signature-derived-key-length[quarkus.cxf.customizedAlgorithmSuite.signature-derived-key-length]`
+
+
+[.description]
+--
+Signature Derived Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SIGNATURE_DERIVED_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_SIGNATURE_DERIVED_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`192`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.minimum-symmetric-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.minimum-symmetric-key-length[quarkus.cxf.customizedAlgorithmSuite.minimum-symmetric-key-length]`
+
+
+[.description]
+--
+Minimum Symmetric Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MINIMUM_SYMMETRIC_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MINIMUM_SYMMETRIC_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`256`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.maximum-symmetric-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.maximum-symmetric-key-length[quarkus.cxf.customizedAlgorithmSuite.maximum-symmetric-key-length]`
+
+
+[.description]
+--
+Maximum Symmetric Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MAXIMUM_SYMMETRIC_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MAXIMUM_SYMMETRIC_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`256`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.minimum-asymmetric-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.minimum-asymmetric-key-length[quarkus.cxf.customizedAlgorithmSuite.minimum-asymmetric-key-length]`
+
+
+[.description]
+--
+Minimum Symmetric Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MINIMUM_ASYMMETRIC_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MINIMUM_ASYMMETRIC_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`1024`
+
+
+a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.maximum-asymmetric-key-length]]`link:#quarkus-cxf_quarkus.cxf.customizedalgorithmsuite.maximum-asymmetric-key-length[quarkus.cxf.customizedAlgorithmSuite.maximum-asymmetric-key-length]`
+
+
+[.description]
+--
+Maximum Symmetric Key Length.
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MAXIMUM_ASYMMETRIC_KEY_LENGTH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++QUARKUS_CXF_CUSTOMIZEDALGORITHMSUITE_MAXIMUM_ASYMMETRIC_KEY_LENGTH+++`
+endif::add-copy-button-to-env-var[]
+--|int 
+|`4096`
+
+
 a|icon:lock[title=Fixed at build time] [[quarkus-cxf_quarkus.cxf.path]]`link:#quarkus-cxf_quarkus.cxf.path[quarkus.cxf.path]`
 
 

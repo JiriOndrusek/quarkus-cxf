@@ -445,4 +445,116 @@ public interface CxfBuildTimeConfig {
         }
     }
 
+    /**
+     * Parameters for fully customizable algorithm suite.
+     */
+    @WithName("customizedAlgorithmSuite")
+    public CustAlgSuite custAlgSuite();
+
+    @ConfigGroup
+    public interface CustAlgSuite {
+
+        public static final String CUSTOMIZED_ALGORITHM_SUITE_NAME = "CustomizedAlgorithmSuite";
+
+        /**
+         * If true fully customizable algorithm suite is loaded into the cxf bus with the identifier
+         * <i>CustomizedAlgorithmSuite</i>
+         * Suggested usage is for scenarios for the non-standard security requirements (like FIPS).
+         *
+         * <p>
+         * Default values are derived from the algorithm suite <i>Basic256Sha256Rsa15</i> and are FIPS compliant.
+         *
+         * <ul>
+         * <li>Asymmetric Signature: http://www.w3.org/2001/04/xmldsig-more#rsa-sha256</li>
+         * <li>Symmetric Signature: http://www.w3.org/2000/09/xmldsig#hmac-sha1</li>
+         * <li>Digest Algorithm: http://www.w3.org/2001/04/xmlenc#sha256</li>
+         * <li>Encryption Algorithm: http://www.w3.org/2009/xmlenc11#aes256-gcm (differs from <i>Basic256Sha256Rsa15</i>)</li>
+         * <li>Symmetric Key Encryption Algorithm: http://www.w3.org/2001/04/xmlenc#kw-aes256</li>
+         * <li>Asymmetric Key Encryption Algorithm: http://www.w3.org/2001/04/xmlenc#rsa-1_5</li>
+         * <li>Encryption Key Derivation: http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1</li>
+         * <li>Signature Key Derivation: http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1</li>
+         * <li>Encryption Derived Key Length: 256</li>
+         * <li>Signature Derived Key Length: 192</li>
+         * <li>Minimum Symmetric Key Length: 256</li>
+         * <li>Maximum Symmetric Key Length: 1024</li>
+         * <li>Minimum Asymmetric Key Length: 256</li>
+         * <li>Maximum Asymmetric Key Length: 4096</li>
+         * </ul>
+         * </p>
+         */
+        @WithDefault("false")
+        public boolean enabled();
+
+        /**
+         * Digest Algorithm.
+         */
+        @WithDefault("http://www.w3.org/2001/04/xmlenc#sha256")
+        public String digestAlgorithm();
+
+        /**
+         * Encryption Algorithm.
+         */
+        @WithDefault("http://www.w3.org/2009/xmlenc11#aes256-gcm")
+        public String encryptionAlgorithm();
+
+        /**
+         * Symmetric Key Encryption Algorithm.
+         */
+        @WithDefault("http://www.w3.org/2001/04/xmlenc#kw-aes256")
+        public String symmetricKeyEncryptionAlgorithm();
+
+        /**
+         * Asymmetric Key Encryption Algorithm.
+         */
+        @WithDefault("http://www.w3.org/2001/04/xmlenc#rsa-1_5")
+        public String asymmetricKeyEncryptionAlgorithm();
+
+        /**
+         * Encryption Key Derivation.
+         */
+        @WithDefault("http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1")
+        public String encryptionKeyDerivation();
+
+        /**
+         * Signature Key Derivation.
+         */
+        @WithDefault("http://schemas.xmlsoap.org/ws/2005/02/sc/dk/p_sha1")
+        public String signatureKeyDerivation();
+
+        /**
+         * Encryption Derived Key Length.
+         */
+        @WithDefault("256")
+        public Integer encryptionDerivedKeyLength();
+
+        /**
+         * Signature Derived Key Length.
+         */
+        @WithDefault("192")
+        public Integer signatureDerivedKeyLength();
+
+        /**
+         * Minimum Symmetric Key Length.
+         */
+        @WithDefault("256")
+        public Integer minimumSymmetricKeyLength();
+
+        /**
+         * Maximum Symmetric Key Length.
+         */
+        @WithDefault("256")
+        public Integer maximumSymmetricKeyLength();
+
+        /**
+         * Minimum Symmetric Key Length.
+         */
+        @WithDefault("1024")
+        public Integer minimumAsymmetricKeyLength();
+
+        /**
+         * Maximum Symmetric Key Length.
+         */
+        @WithDefault("4096")
+        public Integer maximumAsymmetricKeyLength();
+    }
 }
