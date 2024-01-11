@@ -6,8 +6,13 @@ import org.apache.xml.security.stax.ext.XMLSecurityHeaderHandler;
 import org.jboss.jandex.DotName;
 import org.jboss.jandex.IndexView;
 
+import io.quarkiverse.cxf.deployment.CxfBuildTimeConfig;
+import io.quarkiverse.cxf.deployment.RuntimeBusCustomizerBuildItem;
+import io.quarkiverse.cxf.ws.security.CxfWssRecorder;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.annotations.ExecutionTime;
+import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.CombinedIndexBuildItem;
 import io.quarkus.deployment.builditem.IndexDependencyBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.NativeImageProxyDefinitionBuildItem;
@@ -110,5 +115,28 @@ public class Wss4jProcessor {
         proxies.produce(new NativeImageProxyDefinitionBuildItem(
                 org.apache.xml.security.stax.securityToken.InboundSecurityToken.class.getName(),
                 org.apache.xml.security.stax.securityToken.SecurityToken.class.getName()));
+    }
+
+    @BuildStep
+    @Record(ExecutionTime.STATIC_INIT)
+    void fips(CxfWssRecorder recorder,
+            BuildProducer<RuntimeBusCustomizerBuildItem> customizers,
+            CxfBuildTimeConfig config) {
+        if (config.custAlgSuite().enabled()) {
+            customizers.produce(new RuntimeBusCustomizerBuildItem(recorder.customizedAlgorithmSuite(
+                    CxfBuildTimeConfig.CustAlgSuite.CUSTOMIZED_ALGORITHM_SUITE_NAME,
+                    config.custAlgSuite().digestAlgorithm(),
+                    config.custAlgSuite().encryptionAlgorithm(),
+                    config.custAlgSuite().symmetricKeyEncryptionAlgorithm(),
+                    config.custAlgSuite().asymmetricKeyEncryptionAlgorithm(),
+                    config.custAlgSuite().encryptionKeyDerivation(),
+                    config.custAlgSuite().signatureKeyDerivation(),
+                    config.custAlgSuite().encryptionDerivedKeyLength(),
+                    config.custAlgSuite().signatureDerivedKeyLength(),
+                    config.custAlgSuite().minimumSymmetricKeyLength(),
+                    config.custAlgSuite().maximumSymmetricKeyLength(),
+                    config.custAlgSuite().minimumAsymmetricKeyLength(),
+                    config.custAlgSuite().maximumAsymmetricKeyLength())));
+        }
     }
 }
