@@ -181,7 +181,7 @@
                   </sp:ProtectionToken>
                   <sp:AlgorithmSuite>
                      <wsp:Policy>
-                        <sp:Basic256 />
+                        <sp:Basic256GCM />
                      </wsp:Policy>
                   </sp:AlgorithmSuite>
                   <sp:Layout>
