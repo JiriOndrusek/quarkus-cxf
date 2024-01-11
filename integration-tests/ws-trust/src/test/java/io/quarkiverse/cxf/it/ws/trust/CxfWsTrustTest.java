@@ -14,6 +14,7 @@ import io.restassured.config.RestAssuredConfig;
 
 @QuarkusTest
 public class CxfWsTrustTest {
+    private Bus bus = BusFactory.getDefaultBus();;
 
     /**
      * Make sure the ws-trust-1.4-service.wsdl file is served

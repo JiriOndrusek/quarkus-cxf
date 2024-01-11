@@ -4,17 +4,22 @@ import static io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil.anyNs;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.lang.reflect.Proxy;
 import java.util.Map;
 
 import jakarta.xml.ws.BindingProvider;
 
+import org.apache.cxf.jaxws.JaxWsClientProxy;
 import org.apache.cxf.ws.security.SecurityConstants;
 import org.assertj.core.api.Assertions;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
+import io.quarkiverse.cxf.ws.security.CustomAlgSuiteLoader;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.config.RestAssuredConfig;
@@ -191,9 +196,15 @@ public class CxfWssSecurityPolicyServerTest {
     }
 
     WssSecurityPolicyHelloService getPlainClient() {
-        return QuarkusCxfClientTestUtil.getClient(
+        WssSecurityPolicyHelloService client = QuarkusCxfClientTestUtil.getClient(
                 "https://quarkiverse.github.io/quarkiverse-docs/quarkus-cxf/ws-securitypolicy",
                 WssSecurityPolicyHelloService.class,
                 "/soap/security-policy-hello");
+
+        //programmatic registration of customizedAlgorithmSuite
+        final Config config = ConfigProvider.getConfig();
+        new CustomAlgSuiteLoader(((JaxWsClientProxy) Proxy.getInvocationHandler(client)).getClient().getBus(), config);
+
+        return client;
     }
 }
