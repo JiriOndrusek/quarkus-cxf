@@ -7,10 +7,14 @@ import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import org.apache.wss4j.common.ext.WSPasswordCallback;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
+@ApplicationScoped
+@Named("passwordCallback")
 @RegisterForReflection(methods = false, fields = false)
 public class PasswordCallbackHandler implements CallbackHandler {
 
