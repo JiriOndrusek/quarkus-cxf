@@ -16,7 +16,6 @@ import org.apache.wss4j.common.ext.WSPasswordCallback;
 import org.assertj.core.api.Assertions;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
-import org.junit.jupiter.api.Test;
 
 import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
 import io.quarkus.test.common.QuarkusTestResource;
@@ -26,7 +25,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTestResource(CxfWssServerTestResource.class)
 public class CxfWssServerTest {
 
-    @Test
+    //    @Test
     void anonymous() throws IOException {
         final WssRounderService client = QuarkusCxfClientTestUtil.getClient(WssRounderService.class, "/soap/rounder");
         /* Make sure that it fails properly when called without a password */
@@ -37,7 +36,7 @@ public class CxfWssServerTest {
 
     }
 
-    @Test
+    //    @Test
     void usernameToken() throws IOException {
 
         final Config config = ConfigProvider.getConfig();

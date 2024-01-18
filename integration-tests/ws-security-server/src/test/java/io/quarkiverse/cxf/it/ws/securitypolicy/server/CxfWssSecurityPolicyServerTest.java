@@ -2,15 +2,12 @@ package io.quarkiverse.cxf.it.ws.securitypolicy.server;
 
 import static io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil.anyNs;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
 
 import java.io.IOException;
 import java.lang.reflect.Proxy;
-import java.util.Map;
-
-import jakarta.xml.ws.BindingProvider;
 
 import org.apache.cxf.jaxws.JaxWsClientProxy;
-import org.apache.cxf.ws.security.SecurityConstants;
 import org.assertj.core.api.Assertions;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
@@ -28,19 +25,13 @@ import io.restassured.config.RestAssuredConfig;
 public class CxfWssSecurityPolicyServerTest {
 
     @Test
-    void encrypetdSigned() throws IOException {
-        WssSecurityPolicyHelloService client = getPlainClient();
-
-        Map<String, Object> ctx = ((BindingProvider) client).getRequestContext();
-        ctx.put(SecurityConstants.CALLBACK_HANDLER, new PasswordCallbackHandler());
-        ctx.put(SecurityConstants.SIGNATURE_PROPERTIES,
-                Thread.currentThread().getContextClassLoader().getResource("alice.properties"));
-        ctx.put(SecurityConstants.SIGNATURE_USERNAME, "alice");
-        ctx.put(SecurityConstants.ENCRYPT_USERNAME, "bob");
-        ctx.put(SecurityConstants.ENCRYPT_PROPERTIES,
-                Thread.currentThread().getContextClassLoader().getResource("alice.properties"));
-
-        Assertions.assertThat(client.sayHello("foo")).isEqualTo("Secure Hello foo!");
+    void encryptedSigned() throws IOException {
+        RestAssured.given()
+                .body(true)
+                .post("/cxf/securityServer/plainClient/sayHello")
+                .then()
+                .statusCode(200)
+                .body(is("Secure Hello foo!"));
     }
 
     @Test
