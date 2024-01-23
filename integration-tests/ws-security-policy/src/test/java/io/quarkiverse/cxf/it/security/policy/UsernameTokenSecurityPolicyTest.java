@@ -77,4 +77,9 @@ public class UsernameTokenSecurityPolicyTest extends AbstractUsernameTokenSecuri
                         + "Token11"));
     }
 
+    @Test
+    @Override
+    void helloEncryptSign() {
+        super.helloEncryptSign();
+    }
 }
