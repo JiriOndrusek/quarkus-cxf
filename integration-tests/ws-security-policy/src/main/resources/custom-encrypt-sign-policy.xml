@@ -29,7 +29,7 @@
                     </sp:RecipientToken>
                     <sp:AlgorithmSuite>
                         <wsp:Policy>
-                            <sp:CustomAlgorithmSuite/>
+                            <sp:Basic256/>
                         </wsp:Policy>
                     </sp:AlgorithmSuite>
                     <sp:Layout>

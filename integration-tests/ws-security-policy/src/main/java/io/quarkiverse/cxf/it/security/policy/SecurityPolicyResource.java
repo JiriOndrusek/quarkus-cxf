@@ -66,6 +66,10 @@ public class SecurityPolicyResource {
     HelloService helloNoUsernameToken;
 
     @Inject
+    @CXFClient("helloCustomEncryptSign")
+    EncryptSignPolicyHelloService helloCustomEncryptSign;
+
+    @Inject
     @CXFClient("helloEncryptSign")
     EncryptSignPolicyHelloService helloEncryptSign;
 
@@ -141,6 +145,9 @@ public class SecurityPolicyResource {
                 break;
             case "helloNoUsernameToken":
                 service = helloNoUsernameToken;
+                break;
+            case "helloCustomEncryptSign":
+                service = helloCustomEncryptSign;
                 break;
             case "helloEncryptSign":
                 service = helloEncryptSign;
