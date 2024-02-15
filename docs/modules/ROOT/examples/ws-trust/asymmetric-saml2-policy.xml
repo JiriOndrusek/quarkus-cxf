@@ -62,7 +62,7 @@
                     <sp:OnlySignEntireHeadersAndBody />
                     <sp:AlgorithmSuite>
                         <wsp:Policy>
-                            <sp:Basic256 />
+                            <sp:CustomizedAlgorithmSuite />
                         </wsp:Policy>
                     </sp:AlgorithmSuite>
                 </wsp:Policy>
