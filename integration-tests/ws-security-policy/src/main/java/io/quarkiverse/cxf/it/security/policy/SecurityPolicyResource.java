@@ -89,6 +89,18 @@ public class SecurityPolicyResource {
     @Named("recordingReplayCache")
     RecordingReplayCache recordingReplayCache;
 
+    @Inject
+    @CXFClient("helloCustomEncryptSignWrong01")
+    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong01;
+
+    @Inject
+    @CXFClient("helloCustomEncryptSignWrong02")
+    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong02;
+
+    @Inject
+    @CXFClient("helloCustomizedEncryptSign")
+    CustomEncryptSignPolicyHelloService helloCustomizedEncryptSign;
+
     @GET
     @Path("/drainMessages")
     @Produces(MediaType.TEXT_PLAIN)
@@ -153,6 +165,15 @@ public class SecurityPolicyResource {
                 break;
             case "helloSaml2":
                 service = helloSaml2;
+                break;
+            case "helloCustomizedEncryptSign":
+                service = helloCustomizedEncryptSign;
+                break;
+            case "helloCustomEncryptSignWrong01":
+                service = helloCustomEncryptSignWrong01;
+                break;
+            case "helloCustomEncryptSignWrong02":
+                service = helloCustomEncryptSignWrong02;
                 break;
             default:
                 throw new IllegalStateException("Unexpected client " + client);
