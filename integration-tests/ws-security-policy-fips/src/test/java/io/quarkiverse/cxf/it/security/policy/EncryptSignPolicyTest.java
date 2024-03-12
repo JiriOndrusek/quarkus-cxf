@@ -8,16 +8,15 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 
 @QuarkusTest
-public class CustomEncryptSignPolicyTest {
-
+public class EncryptSignPolicyTest {
     @Test
-    void helloDefaultCustomValues() {
+    void helloEncryptSign() {
         RestAssured.given()
                 .config(PolicyTestUtils.restAssuredConfig())
                 .body("Dolly")
-                .post("/cxf/security-policy/helloCustomEncryptSign")
+                .post("/cxf/security-policy/helloEncryptSign")
                 .then()
                 .statusCode(200)
-                .body(is("Hello Dolly from CustomEncryptSign!"));
+                .body(is("Hello Dolly from EncryptSign!"));
     }
 }
