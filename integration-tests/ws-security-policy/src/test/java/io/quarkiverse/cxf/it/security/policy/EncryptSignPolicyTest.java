@@ -24,6 +24,8 @@ public class EncryptSignPolicyTest {
         if (PolicyTestUtils.isFipsEnabled()) {
             response.statusCode(500)
                     .body(containsString("Cannot find any provider supporting RSA/ECB/OAEPWithSHA1AndMGF1Padding"));
+
+            //            final List<String> messages = PolicyTestUtils.drainMessages("drainMessages", 2);
         } else {
             response.statusCode(200)
                     .body(is("Hello Dolly from EncryptSign!"));
