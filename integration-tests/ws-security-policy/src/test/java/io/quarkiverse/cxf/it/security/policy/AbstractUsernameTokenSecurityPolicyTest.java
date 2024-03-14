@@ -215,14 +215,14 @@ public abstract class AbstractUsernameTokenSecurityPolicyTest {
                     .body(containsString("java.security.NoSuchAlgorithmException: Cannot find any provider supporting"));
 
             final List<String> messages = PolicyTestUtils.drainMessages("drainMessages", 2);
-//            //no further testing is required
-//            return;
-        } else {
-
-            //non-fips environment
-            response.statusCode(200)
-                    .body(is(responsePayload));
+            //no further testing is required
+            PolicyTestUtils.drainMessages("drainMessages", 2);
+            return;
         }
+
+        //non-fips environment
+        response.statusCode(200)
+                .body(is(responsePayload));
 
         final List<String> messages = PolicyTestUtils.drainMessages("drainMessages", 2);
 
