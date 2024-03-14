@@ -217,11 +217,12 @@ public abstract class AbstractUsernameTokenSecurityPolicyTest {
             final List<String> messages = PolicyTestUtils.drainMessages("drainMessages", 2);
 //            //no further testing is required
 //            return;
-        }
+        } else {
 
-        //non-fips environment
-        response.statusCode(200)
-                .body(is(responsePayload));
+            //non-fips environment
+            response.statusCode(200)
+                    .body(is(responsePayload));
+        }
 
         final List<String> messages = PolicyTestUtils.drainMessages("drainMessages", 2);
 
