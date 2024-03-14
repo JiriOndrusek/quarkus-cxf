@@ -3,13 +3,13 @@ package io.quarkiverse.cxf.it.security.policy;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
-import io.restassured.response.ValidatableResponse;
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
-
-import java.io.IOException;
+import io.restassured.response.ValidatableResponse;
 
 @QuarkusTest
 public class EncryptSignPolicyTest {
@@ -21,7 +21,7 @@ public class EncryptSignPolicyTest {
                 .post("/cxf/security-policy/helloEncryptSign")
                 .then();
 
-        if(PolicyTestUtils.isFipsEnabled()) {
+        if (PolicyTestUtils.isFipsEnabled()) {
             response.statusCode(500)
                     .body(containsString("Cannot find any provider supporting RSA/ECB/OAEPWithSHA1AndMGF1Padding"));
         } else {
