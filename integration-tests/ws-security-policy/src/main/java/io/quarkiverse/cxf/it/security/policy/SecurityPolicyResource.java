@@ -52,18 +52,18 @@ public class SecurityPolicyResource {
     @Inject
     @CXFClient("helloCustomEncryptSign")
     CustomEncryptSignPolicyHelloService helloCustomEncryptSign;
+    //
+    //    @Inject
+    //    @CXFClient("helloCustomEncryptSignWrong01")
+    //    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong01;
+    //
+    //    @Inject
+    //    @CXFClient("helloCustomEncryptSignWrong02")
+    //    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong02;
 
-    @Inject
-    @CXFClient("helloCustomEncryptSignWrong01")
-    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong01;
-
-    @Inject
-    @CXFClient("helloCustomEncryptSignWrong02")
-    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong02;
-
-    @Inject
-    @CXFClient("helloCustomizedEncryptSign")
-    CustomEncryptSignPolicyHelloService helloCustomizedEncryptSign;
+    //    @Inject
+    //    @CXFClient("helloCustomizedEncryptSign")
+    //    CustomEncryptSignPolicyHelloService helloCustomizedEncryptSign;
 
     @Inject
     @CXFClient("helloUsernameToken")
@@ -170,18 +170,18 @@ public class SecurityPolicyResource {
             case "helloSaml2":
                 service = helloSaml2;
                 break;
-            case "helloCustomizedEncryptSign":
-                service = helloCustomizedEncryptSign;
-                break;
+            //            case "helloCustomizedEncryptSign":
+            //                service = helloCustomizedEncryptSign;
+            //                break;
             case "helloCustomEncryptSign":
                 service = helloCustomEncryptSign;
                 break;
-            case "helloCustomEncryptSignWrong01":
-                service = helloCustomEncryptSignWrong01;
-                break;
-            case "helloCustomEncryptSignWrong02":
-                service = helloCustomEncryptSignWrong02;
-                break;
+            //            case "helloCustomEncryptSignWrong01":
+            //                service = helloCustomEncryptSignWrong01;
+            //                break;
+            //            case "helloCustomEncryptSignWrong02":
+            //                service = helloCustomEncryptSignWrong02;
+            //                break;
             default:
                 throw new IllegalStateException("Unexpected client " + client);
         }
