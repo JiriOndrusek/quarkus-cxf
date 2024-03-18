@@ -63,7 +63,7 @@ public class SecurityPolicyResource {
 
     @Inject
     @CXFClient("helloCustomizedEncryptSign")
-    CustomEncryptSignPolicyHelloService helloCustomizedEncryptSign;
+    CustomizedEncryptSignPolicyHelloService helloCustomizedEncryptSign;
 
     @Inject
     @CXFClient("helloUsernameToken")
