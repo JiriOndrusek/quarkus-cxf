@@ -14,7 +14,7 @@ import io.restassured.response.ValidatableResponse;
 @QuarkusTest
 public class CustomEncryptSignPolicyTest {
 
-//    @Test
+    //    @Test
     void helloDefaultCustomValues() {
         RestAssured.given()
                 .config(PolicyTestUtils.restAssuredConfig())
@@ -43,7 +43,7 @@ public class CustomEncryptSignPolicyTest {
         }
     }
 
-//    @Test
+    //    @Test
     void helloCustomizedValuesWrong1() throws IOException {
 
         //client used default custom algorithm suite, but server is changed (server is same as in the test 'helloDefaultCustomValues')
@@ -56,7 +56,7 @@ public class CustomEncryptSignPolicyTest {
                 .body(containsString("An error was discovered processing the <wsse:Security> header"));
     }
 
-//    @Test
+    //    @Test
     void helloCustomizedValuesWrong2() throws IOException {
 
         String condition = PolicyTestUtils.isFipsEnabled() ? "unsupported key transport encryption algorithm"
