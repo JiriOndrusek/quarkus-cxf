@@ -54,8 +54,8 @@ public class SecurityPolicyResource {
     CustomEncryptSignPolicyHelloService helloCustomEncryptSign;
 
     @Inject
-    @CXFClient("helloCustomEncryptSignWrong01")
-    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong01;
+    @CXFClient("helloCustomEncryptSignWrong1")
+    CustomEncryptSignWrong1PolicyHelloService helloCustomEncryptSignWrong1;
 
     @Inject
     @CXFClient("helloCustomEncryptSignWrong02")
@@ -176,8 +176,8 @@ public class SecurityPolicyResource {
             case "helloCustomEncryptSign":
                 service = helloCustomEncryptSign;
                 break;
-            case "helloCustomEncryptSignWrong01":
-                service = helloCustomEncryptSignWrong01;
+            case "helloCustomEncryptSignWrong1":
+                service = helloCustomEncryptSignWrong1;
                 break;
             case "helloCustomEncryptSignWrong02":
                 service = helloCustomEncryptSignWrong02;

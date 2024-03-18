@@ -44,13 +44,13 @@ public class CustomEncryptSignPolicyTest {
     }
 
     @Test
-    void helloCustomizedValuesWrong01() throws IOException {
+    void helloCustomizedValuesWrong1() throws IOException {
 
         //client used default custom algorithm suite, but server is changed (server is same as in the test 'helloDefaultCustomValues')
         RestAssured.given()
                 .config(PolicyTestUtils.restAssuredConfig())
                 .body("Dolly")
-                .post("/cxf/security-policy/helloCustomEncryptSignWrong01")
+                .post("/cxf/security-policy/helloCustomEncryptSignWrong1")
                 .then()
                 .statusCode(500)
                 .body(containsString("An error was discovered processing the <wsse:Security> header"));
