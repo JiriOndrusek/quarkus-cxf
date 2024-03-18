@@ -57,7 +57,7 @@ public class CustomEncryptSignPolicyTest {
     }
 
     @Test
-    void helloCustomizedValuesWrong02() throws IOException {
+    void helloCustomizedValuesWrong2() throws IOException {
 
         String condition = PolicyTestUtils.isFipsEnabled() ? "unsupported key transport encryption algorithm"
                 : "An error was discovered processing the <wsse:Security> header";
@@ -65,7 +65,7 @@ public class CustomEncryptSignPolicyTest {
         RestAssured.given()
                 .config(PolicyTestUtils.restAssuredConfig())
                 .body("Dolly")
-                .post("/cxf/security-policy/helloCustomEncryptSignWrong02")
+                .post("/cxf/security-policy/helloCustomEncryptSignWrong2")
                 .then()
                 .statusCode(500)
                 .body(containsString(condition));

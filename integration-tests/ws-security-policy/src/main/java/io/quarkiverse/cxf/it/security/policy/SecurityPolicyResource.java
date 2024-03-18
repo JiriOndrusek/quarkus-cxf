@@ -58,8 +58,8 @@ public class SecurityPolicyResource {
     CustomEncryptSignWrong1PolicyHelloService helloCustomEncryptSignWrong1;
 
     @Inject
-    @CXFClient("helloCustomEncryptSignWrong02")
-    CustomEncryptSignPolicyHelloService helloCustomEncryptSignWrong02;
+    @CXFClient("helloCustomEncryptSignWrong2")
+    CustomEncryptSignWrong2PolicyHelloService helloCustomEncryptSignWrong2;
 
     @Inject
     @CXFClient("helloCustomizedEncryptSign")
@@ -179,8 +179,8 @@ public class SecurityPolicyResource {
             case "helloCustomEncryptSignWrong1":
                 service = helloCustomEncryptSignWrong1;
                 break;
-            case "helloCustomEncryptSignWrong02":
-                service = helloCustomEncryptSignWrong02;
+            case "helloCustomEncryptSignWrong2":
+                service = helloCustomEncryptSignWrong2;
                 break;
             default:
                 throw new IllegalStateException("Unexpected client " + client);
