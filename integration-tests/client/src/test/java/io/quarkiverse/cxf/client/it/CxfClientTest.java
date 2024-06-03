@@ -2,22 +2,20 @@ package io.quarkiverse.cxf.client.it;
 
 import static org.hamcrest.Matchers.is;
 
+import io.quarkiverse.cxf.CXFClientInfo;
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import org.assertj.core.api.Assertions;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import io.quarkiverse.cxf.CXFClientInfo;
-import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
 
 @QuarkusTest
 @QuarkusTestResource(CxfClientTestResource.class)

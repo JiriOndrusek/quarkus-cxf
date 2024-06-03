@@ -3,6 +3,12 @@ package io.quarkiverse.cxf.it.server;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
+import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.TestProfile;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,16 +18,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.TestProfile;
-import io.restassured.http.Header;
-import io.restassured.http.Headers;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 @QuarkusTest
 @TestProfile(XForwardedProfile.class)

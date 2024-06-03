@@ -21,8 +21,8 @@
  */
 package io.quarkiverse.cxf.it.ws.securitypolicy.server;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
 
 @WebService(targetNamespace = "http://www.jboss.org/jbossws/ws-extensions/wssecuritypolicy")
 public interface WssSecurityPolicyHelloService {

@@ -17,12 +17,10 @@
 
 package io.quarkiverse.cxf.client.it;
 
+import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
 import java.util.Map;
-
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
-
-import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
 
 public class CxfClientTestResource implements QuarkusTestResourceLifecycleManager {
 

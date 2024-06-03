@@ -1,10 +1,9 @@
 package io.quarkiverse.cxf.it.server;
 
+import io.quarkus.test.junit.QuarkusTestProfile;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import io.quarkus.test.junit.QuarkusTestProfile;
 
 public class XForwardedProfile implements QuarkusTestProfile {
 

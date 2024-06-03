@@ -1,13 +1,14 @@
 package io.quarkiverse.cxf.it.wss.server;
 
+import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.junit.QuarkusTest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
-
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
@@ -18,10 +19,6 @@ import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.junit.jupiter.api.Test;
 
-import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
-import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.junit.QuarkusTest;
-
 @QuarkusTest
 @QuarkusTestResource(CxfWssServerTestResource.class)
 public class CxfWssServerTest {
@@ -30,7 +27,7 @@ public class CxfWssServerTest {
     void anonymous() throws IOException {
         final WssRounderService client = QuarkusCxfClientTestUtil.getClient(WssRounderService.class, "/soap/rounder");
         /* Make sure that it fails properly when called without a password */
-        Assertions.assertThatExceptionOfType(javax.xml.ws.soap.SOAPFaultException.class)
+        Assertions.assertThatExceptionOfType(jakarta.xml.ws.soap.SOAPFaultException.class)
                 .isThrownBy(() -> client.round(2.8))
                 .withMessage(
                         "A security error was encountered when verifying the message");

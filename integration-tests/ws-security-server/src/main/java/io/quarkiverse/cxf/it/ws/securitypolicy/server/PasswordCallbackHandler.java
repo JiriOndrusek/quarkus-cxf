@@ -1,15 +1,12 @@
 package io.quarkiverse.cxf.it.ws.securitypolicy.server;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.IOException;
 import java.util.Map;
-
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
-
 import org.apache.wss4j.common.ext.WSPasswordCallback;
-
-import io.quarkus.runtime.annotations.RegisterForReflection;
 
 @RegisterForReflection(methods = false, fields = false)
 public class PasswordCallbackHandler implements CallbackHandler {

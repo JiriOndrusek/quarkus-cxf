@@ -2,18 +2,16 @@ package io.quarkiverse.cxf.it.wss.client;
 
 import static org.hamcrest.Matchers.is;
 
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import org.assertj.core.api.Assertions;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
 
 @QuarkusTest
 @QuarkusTestResource(CxfWssClientTestResource.class)

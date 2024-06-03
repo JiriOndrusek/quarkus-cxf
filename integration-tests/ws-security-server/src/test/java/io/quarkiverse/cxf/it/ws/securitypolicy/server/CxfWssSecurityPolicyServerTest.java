@@ -3,21 +3,18 @@ package io.quarkiverse.cxf.it.ws.securitypolicy.server;
 import static io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil.anyNs;
 import static io.restassured.RestAssured.given;
 
+import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
+import io.restassured.config.RestAssuredConfig;
+import jakarta.xml.ws.BindingProvider;
 import java.io.IOException;
 import java.util.Map;
-
-import javax.xml.ws.BindingProvider;
-
 import org.apache.cxf.ws.security.SecurityConstants;
 import org.assertj.core.api.Assertions;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-
-import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
-import io.restassured.config.RestAssuredConfig;
 
 @QuarkusTest
 public class CxfWssSecurityPolicyServerTest {
@@ -42,7 +39,7 @@ public class CxfWssSecurityPolicyServerTest {
     void noSecurityConfig() throws IOException {
         WssSecurityPolicyHelloService client = getPlainClient();
         /* Make sure that it fails properly when called without a password */
-        Assertions.assertThatExceptionOfType(javax.xml.ws.soap.SOAPFaultException.class)
+        Assertions.assertThatExceptionOfType(jakarta.xml.ws.soap.SOAPFaultException.class)
                 .isThrownBy(() -> client.sayHello("bar"))
                 .withMessage(
                         "A encryption username needs to be declared.");

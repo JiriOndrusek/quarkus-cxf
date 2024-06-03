@@ -3,10 +3,9 @@ package io.quarkiverse.cxf.it.server;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
+import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
 
 abstract class AbstractGreetingWebServiceTest {
     protected static GreetingWebService greetingWS;

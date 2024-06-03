@@ -1,21 +1,18 @@
 package io.quarkiverse.cxf.it.wss.client;
 
+import io.quarkus.arc.Unremovable;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
-
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
 import org.apache.wss4j.common.ConfigurationConstants;
 import org.apache.wss4j.common.ext.WSPasswordCallback;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-import io.quarkus.arc.Unremovable;
 
 @ApplicationScoped
 public class WSS4JOutInterceptorProducer {

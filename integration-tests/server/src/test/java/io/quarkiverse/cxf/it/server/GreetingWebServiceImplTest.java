@@ -1,11 +1,10 @@
 package io.quarkiverse.cxf.it.server;
 
+import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
+import io.quarkus.test.junit.QuarkusTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
-import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class GreetingWebServiceImplTest extends AbstractGreetingWebServiceTest {

@@ -3,9 +3,8 @@ package io.quarkiverse.cxf.it.server;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
-import org.junit.jupiter.api.Test;
-
 import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class GreetingSOAPHandlerTest {

@@ -4,17 +4,15 @@ import static io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil.anyNs;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
-import javax.jws.WebService;
-
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import io.quarkiverse.cxf.test.QuarkusCxfClientTestUtil;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.config.RestAssuredConfig;
+import jakarta.jws.WebService;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class GreetingWebServiceAddressingImplTest extends AbstractGreetingWebServiceTest {

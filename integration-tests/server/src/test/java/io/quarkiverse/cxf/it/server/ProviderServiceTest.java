@@ -4,16 +4,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.not;
 
-import javax.inject.Inject;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import io.quarkiverse.cxf.it.server.provider.SOAPMessageProvider;
 import io.quarkiverse.cxf.it.server.provider.SourceMessageProvider;
 import io.quarkiverse.cxf.it.server.provider.SourcePayloadProvider;
 import io.quarkiverse.cxf.it.server.provider.StreamSourcePayloadProvider;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class ProviderServiceTest {

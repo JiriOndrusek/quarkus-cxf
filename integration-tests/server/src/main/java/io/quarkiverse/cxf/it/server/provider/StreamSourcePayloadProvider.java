@@ -1,14 +1,12 @@
 package io.quarkiverse.cxf.it.server.provider;
 
+import jakarta.xml.ws.BindingType;
+import jakarta.xml.ws.Provider;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.ServiceMode;
+import jakarta.xml.ws.WebServiceProvider;
 import java.io.StringReader;
-
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.ws.BindingType;
-import javax.xml.ws.Provider;
-import javax.xml.ws.Service;
-import javax.xml.ws.ServiceMode;
-import javax.xml.ws.WebServiceProvider;
-
 import org.apache.cxf.staxutils.StaxUtils;
 
 @WebServiceProvider

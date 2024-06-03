@@ -1,8 +1,7 @@
 package io.quarkiverse.cxf.it.wss.server;
 
-import java.util.Map;
-
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
+import java.util.Map;
 
 public class CxfWssServerTestResource implements QuarkusTestResourceLifecycleManager {
 
