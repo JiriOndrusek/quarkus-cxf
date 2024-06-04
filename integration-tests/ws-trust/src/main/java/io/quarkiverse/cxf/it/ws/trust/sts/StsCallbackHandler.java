@@ -10,6 +10,7 @@ public class StsCallbackHandler extends PasswordCallbackHandler {
 
     public StsCallbackHandler() {
         super(Map.of(
-                "sts", "password"));
+                "mystskey", "stskpass",
+                "alice", "clarinet"));
     }
 }

@@ -32,11 +32,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.quarkiverse.cxf</groupId>
-            <artifactId>quarkus-cxf-test-util</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
             <scope>test</scope>
@@ -50,11 +45,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit4-mock</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -90,6 +80,12 @@
                             <outputDirectory>${maven.multiModuleProjectDirectory}/docs/modules/ROOT/examples/calculator-client</outputDirectory>
                             <resources>
                                 <resource>
+                                    <directory>.</directory>
+                                    <includes>
+                                        <include>pom.xml</include>
+                                    </includes>
+                                </resource>
+                                <resource>
                                     <directory>src/main/resources</directory>
                                     <includes>
                                         <include>application.properties</include>
@@ -102,38 +98,6 @@
                                     </includes>
                                 </resource>
                             </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>groovy-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-pom-xml-to-docs</id>
-                        <goals>
-                            <goal>execute</goal>
-                        </goals>
-                        <phase>compile</phase><!-- same as the maven-resources-plugin above -->
-                        <configuration>
-                            <!-- Copy pom.xml changing the parent version so that the destination -->
-                            <!-- file does not change after every release -->
-                            <source>
-                                import java.nio.file.Files
-                                import java.nio.file.Path
-                                def srcPath = project.basedir.toPath().resolve('pom.xml')
-                                def newContent = srcPath.getText('UTF-8')
-                                newContent = newContent.replace('&lt;version&gt;${project.version}&lt;/version&gt;', '&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;')
-                                def destPath = Path.of('${maven.multiModuleProjectDirectory}/docs/modules/ROOT/examples/calculator-client/pom.xml')
-                                if (!Files.exists(destPath) || !newContent.equals(destPath.getText('UTF-8'))) {
-                                    destPath.setText(newContent.toString(), 'UTF-8')
-                                    println('Updated ' + destPath.toString())
-                                } else {
-                                    println(destPath.toString() + ' is up to date')
-                                }
-                            </source>
                         </configuration>
                     </execution>
                 </executions>
@@ -190,17 +154,6 @@
                     </exclusions>
                 </dependency>
             </dependencies>
-        </profile>
-        <profile>
-            <id>skip-testcontainers-tests</id>
-            <activation>
-                <property>
-                    <name>skip-testcontainers-tests</name>
-                </property>
-            </activation>
-            <properties>
-                <skipTests>true</skipTests>
-            </properties>
         </profile>
     </profiles>
 

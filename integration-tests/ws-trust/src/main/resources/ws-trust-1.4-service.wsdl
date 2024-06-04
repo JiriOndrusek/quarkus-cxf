@@ -156,7 +156,7 @@
 
     <wsdl:service name="SecurityTokenService">
         <wsdl:port name="UT_Port" binding="tns:UT_Binding">
-            <soap:address location="http://localhost:8081/services/sts" />
+            <soap:address location="http://localhost:8081/jaxws-samples-wsse-policy-trust-sts/SecurityTokenService/UT" />
         </wsdl:port>
     </wsdl:service>
 
@@ -181,7 +181,7 @@
                   </sp:ProtectionToken>
                   <sp:AlgorithmSuite>
                      <wsp:Policy>
-                         <sp:CustomAlgorithmSuite/>
+                        <sp:Basic256 />
                      </wsp:Policy>
                   </sp:AlgorithmSuite>
                   <sp:Layout>

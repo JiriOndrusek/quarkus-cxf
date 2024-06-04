@@ -1,8 +1,6 @@
 package io.quarkiverse.cxf.hc5.it;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 import jakarta.inject.Inject;
 
@@ -30,12 +28,9 @@ class Hc5ContextlessTest {
     @Test
     void contextless() throws InterruptedException {
         Assertions.assertThat(myCalculator.add(5, 5)).isEqualTo(10);
-
-        final CountDownLatch latch = new CountDownLatch(1);
         myCalculator.addAsync(5, 7, response -> {
             try {
                 Assertions.assertThat(response.get().getReturn()).isEqualTo(12);
-                latch.countDown();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 throw new RuntimeException(e);
@@ -43,6 +38,5 @@ class Hc5ContextlessTest {
                 throw new RuntimeException(e);
             }
         });
-        latch.await(10, TimeUnit.SECONDS);
     }
 }

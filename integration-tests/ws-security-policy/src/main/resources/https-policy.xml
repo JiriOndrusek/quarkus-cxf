@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsp:Policy wsp:Id="HttpsSecurityServicePolicy"
-            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
     xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
     xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <wsp:ExactlyOne>
@@ -12,7 +11,6 @@
                             <sp:HttpsToken RequireClientCertificate="false" />
                         </wsp:Policy>
                     </sp:TransportToken>
-                    <sp:IncludeTimestamp />
                     <sp:AlgorithmSuite>
                         <wsp:Policy>
                             <sp:Basic128 />

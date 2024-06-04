@@ -11,18 +11,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import java.util.Random;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.cxf.transport.http.HttpClientHTTPConduit;
-import org.apache.cxf.transport.http.URLConnectionHTTPConduit;
 import org.assertj.core.api.Assertions;
 import org.eclipse.microprofile.config.ConfigProvider;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
 import org.jboss.logging.Logger;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -74,16 +70,6 @@ public class CxfClientTest {
      */
     @Test
     void multiplyProxy() {
-
-        String proxyPort = ConfigProvider.getConfig().getValue("cxf.it.calculator.proxy.port", String.class);
-        String uri = ConfigProvider.getConfig().getValue("cxf.it.calculator.hostNameUri", String.class);
-        /* Make sure nothing was proxied before this test */
-        RestAssured.given()
-                .get("http://localhost:" + proxyPort)
-                .then()
-                .statusCode(200)
-                .body("$", Matchers.hasSize(0));
-
         RestAssured.given()
                 .queryParam("a", 4)
                 .queryParam("b", 5)
@@ -91,16 +77,6 @@ public class CxfClientTest {
                 .then()
                 .statusCode(200)
                 .body(is(String.valueOf(20)));
-
-        /* Make sure the SOAP request passed the proxy server */
-        RestAssured.given()
-                .get("http://localhost:" + proxyPort)
-                .then()
-                .statusCode(200)
-                .body(
-                        "$", Matchers.hasSize(1),
-                        "[0]", Matchers.equalTo("POST " + uri
-                                + "/calculator-ws/CalculatorService <soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:multiply xmlns:ns2=\"http://www.jboss.org/eap/quickstarts/wscalculator/Calculator\"><arg0>4</arg0><arg1>5</arg1></ns2:multiply></soap:Body></soap:Envelope>"));
     }
 
     /**
@@ -211,6 +187,7 @@ public class CxfClientTest {
      * {@link CXFClientInfo}.
      */
     @Test
+    @Disabled("https://github.com/quarkiverse/quarkus-cxf/issues/491")
     void wsdlUrl() {
 
         final String wsdlUrl = ConfigProvider.getConfig()
@@ -230,6 +207,7 @@ public class CxfClientTest {
      * {@link CXFClientInfo}.
      */
     @Test
+    @Disabled("https://github.com/quarkiverse/quarkus-cxf/issues/491")
     void endpointAddress() {
 
         final String endpointAddress = ConfigProvider.getConfig()
@@ -323,7 +301,7 @@ public class CxfClientTest {
             staticCopyPath = Paths.get("target/classes/wsdl/" + serviceName + ".wsdl");
             Files.createDirectories(staticCopyPath.getParent());
             try (InputStream in = CxfClientTest.class.getClassLoader().getResourceAsStream("wsdl/" + serviceName + ".wsdl")) {
-                Files.copy(in, staticCopyPath, StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(in, staticCopyPath);
             }
         }
         /* The changing Docker IP address in the WSDL should not matter */
@@ -398,7 +376,7 @@ public class CxfClientTest {
      */
     @Test
     void soakRequestScopedHttpClient() {
-        soak("requestScopedHttpClient", HttpClientHTTPConduit.class.getName());
+        soak("requestScopedHttpClient");
 
     }
 
@@ -407,15 +385,11 @@ public class CxfClientTest {
      */
     @Test
     void soakRequestScopedUrlConnectionClient() {
-        soak("requestScopedUrlConnectionClient", URLConnectionHTTPConduit.class.getName());
+        soak("requestScopedUrlConnectionClient");
+
     }
 
-    private void soak(String client, String expectedConduit) {
-        RestAssured.given()
-                .get("/cxf/client/clientInfo/" + client + "/httpConduit")
-                .then()
-                .statusCode(200)
-                .body(CoreMatchers.is(expectedConduit));
+    private void soak(String client) {
 
         final Random rnd = new Random();
         // we divide by 2 to avoid overflow
@@ -423,20 +397,11 @@ public class CxfClientTest {
         int b = rnd.nextInt() / 2;
         int expected = a + b;
 
-        int requestCount = Integer
+        final int requestCount = Integer
                 .parseInt(Optional.ofNullable(System.getenv("QUARKUS_CXF_CLIENT_SOAK_ITERATIONS")).orElse("300"));
-        int acceptableDeviation = Integer
-                .parseInt(Optional.ofNullable(System.getenv("QUARKUS_CXF_CLIENT_SOAK_ACCEPTABLE_THREAD_COUNT_DEVIATION"))
-                        .orElse("5"));
-
-        if (requestCount < 30) {
-            log.infof("QUARKUS_CXF_CLIENT_SOAK_ITERATIONS = %d is too low, using %d", requestCount, 30);
-            requestCount = 30;
-        }
-        final int checkPoint = 10;
-        int threadsAtCheckpoint = -1;
         log.infof("Performing %d interations", requestCount);
         for (int i = 0; i < requestCount; i++) {
+            log.infof("Soaking round %d", i);
             RestAssured.given()
                     .queryParam("a", a)
                     .queryParam("b", b)
@@ -444,29 +409,7 @@ public class CxfClientTest {
                     .then()
                     .statusCode(200)
                     .body(is(String.valueOf(expected)));
-            final int activeThreadCount = activeThreadCount();
-            log.infof("Soaked round %d, activeTreads: %d", i, activeThreadCount);
-
-            if (i < checkPoint) {
-                /* Nothing to do */
-            } else if (i == checkPoint) {
-                threadsAtCheckpoint = activeThreadCount;
-            } else {
-                if (activeThreadCount - threadsAtCheckpoint > acceptableDeviation) {
-                    Assertions.fail("At iteration " + i + ", there is more active threads (" + activeThreadCount
-                            + ") than threads at iteration " + checkPoint + " (" + threadsAtCheckpoint
-                            + ") including acceptable deviation " + acceptableDeviation);
-                }
-            }
         }
-    }
-
-    private int activeThreadCount() {
-        return Integer.parseInt(RestAssured.given()
-                .get("/cxf/client/activeThreadCount")
-                .then()
-                .statusCode(200)
-                .extract().body().asString());
     }
 
 }

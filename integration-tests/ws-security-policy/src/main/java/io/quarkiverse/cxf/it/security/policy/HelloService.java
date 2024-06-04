@@ -6,11 +6,10 @@ import jakarta.jws.WebService;
 /**
  * The simplest Hello service.
  */
-@WebService(serviceName = "HelloService")
-public interface HelloService extends AbstractHelloService {
+@WebService(name = "HelloService", serviceName = "HelloService")
+public interface HelloService {
 
     @WebMethod
-    @Override
     String hello(String text);
 
 }

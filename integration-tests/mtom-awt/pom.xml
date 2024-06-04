@@ -17,6 +17,10 @@
             <groupId>io.quarkiverse.cxf</groupId>
             <artifactId>quarkus-cxf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.cxf</groupId>
+            <artifactId>quarkus-cxf-rt-features-logging</artifactId>
+        </dependency>
         <dependency><!-- for java.awt.Image -->
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-awt</artifactId>
@@ -92,6 +96,19 @@
                 <dependency>
                     <groupId>io.quarkiverse.cxf</groupId>
                     <artifactId>quarkus-cxf-deployment</artifactId>
+                    <version>${project.version}</version>
+                    <type>pom</type>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>*</groupId>
+                            <artifactId>*</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>io.quarkiverse.cxf</groupId>
+                    <artifactId>quarkus-cxf-rt-features-logging-deployment</artifactId>
                     <version>${project.version}</version>
                     <type>pom</type>
                     <scope>test</scope>

@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ class ClientGreetingTest {
     @Inject
     GreetingWebService greetingImpl;
 
-    @CXFClient("greeting")
+    @Named("io.quarkiverse.cxf.it.server.GreetingWebService")
     CXFClientInfo greetingInfo;
 
     @Test
@@ -39,7 +40,7 @@ class ClientGreetingTest {
     @Test
     public void testDefaultEpAddress() {
         Assertions.assertEquals(
-                "http://localhost:8081/soap/greeting",
+                "http://localhost:8080/io.quarkiverse.cxf.it.server.greetingwebservice",
                 this.greetingInfo.getEndpointAddress());
     }
 

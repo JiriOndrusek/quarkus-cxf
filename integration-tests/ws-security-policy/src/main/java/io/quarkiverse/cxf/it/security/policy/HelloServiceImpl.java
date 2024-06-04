@@ -6,7 +6,7 @@ import jakarta.jws.WebService;
 /**
  * The simplest Hello service implementation.
  */
-@WebService
+@WebService(serviceName = "HelloService")
 public class HelloServiceImpl implements HelloService {
 
     @WebMethod

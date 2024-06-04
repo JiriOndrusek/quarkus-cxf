@@ -15,22 +15,20 @@
 
     <modules>
         <module>client</module>
-        <module>client-server</module>
-        <module>fastinfoset</module>
         <module>hc5</module>
         <module>server</module>
-        <module>ws-security</module>
+        <module>logging</module>
+        <module>ws-addressing</module>
+        <module>ws-security-client</module>
         <module>ws-security-policy</module>
+        <module>ws-security-server</module>
         <module>ws-trust</module>
-        <module>ws-rm-client</module>
-        <module>mtls</module>
+        <module>ws-rm</module>
         <module>mtom</module>
         <module>mtom-awt</module>
         <module>metrics</module>
-        <module>opentelemetry</module>
         <module>wsdl2java</module>
         <module>wsdl2java-no-config</module>
-        <module>santuario-xmlsec</module>
     </modules>
 
     <properties>
