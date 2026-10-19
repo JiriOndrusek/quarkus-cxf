@@ -234,21 +234,45 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-core</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-features-logging</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-features-metrics</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxrs</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -256,6 +280,10 @@
                 <artifactId>cxf-rt-frontend-jaxws</artifactId>
                 <version>${cxf.version}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
@@ -266,44 +294,90 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-rs-client</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-rs-extension-providers</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-rs-security-oauth2</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-transports-http</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-ws-mex</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-ws-rm</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-ws-security</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-wsdl</artifactId>
                 <version>${cxf.version}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>org.ow2.asm</groupId>
                         <artifactId>asm</artifactId>
@@ -314,41 +388,89 @@
                 <groupId>org.apache.cxf.services.sts</groupId>
                 <artifactId>cxf-services-sts-core</artifactId>
                 <version>${cxf.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjc-utils</groupId>
                 <artifactId>cxf-xjc-runtime</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-boolean</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-dv</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-javadoc</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-pl</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-ts</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf.xjcplugins</groupId>
                 <artifactId>cxf-xjc-wsdlextension</artifactId>
                 <version>${cxf.xjcplugins.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bc-fips</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -541,6 +663,14 @@
                             <flattenedReducedPomFile>${project.build.directory}/flattened-reduced-pom.xml</flattenedReducedPomFile>
                             <flattenedReducedExpandedPomFile>${project.build.directory}/flattened-reduced-expanded-pom.xml</flattenedReducedExpandedPomFile>
                             <flattenedReducedVerbosePomFile>${project.build.directory}/flattened-reduced-verbose-pom.xml</flattenedReducedVerbosePomFile>
+                            <bomEntryTransformations>
+                                <bomEntryTransformation>
+                                    <!-- The fips profile of cxf-parent (activated by -Dfips.enabled) adds bc-fips to all CXF modules. -->
+                                    <!-- It would clash with quarkus-cxf-bc-stub, so keep it out of the applications. -->
+                                    <gavPattern>org.apache.cxf*:*</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </bomEntryTransformation>
+                            </bomEntryTransformations>
                             <autogeneratedBomEntryTransformations>
                                 <autogeneratedBomEntryTransformation>
                                     <gavPattern>io.quarkiverse.xmlsec:quarkus-xmlsec-deployment</gavPattern>
@@ -548,7 +678,351 @@
                                 </autogeneratedBomEntryTransformation>
                                 <autogeneratedBomEntryTransformation>
                                     <gavPattern>org.apache.cxf:cxf-tools-java2ws</gavPattern>
-                                    <addExclusions>org.apache.cxf:cxf-rt-databinding-aegis,org.apache.cxf:cxf-rt-javascript</addExclusions>
+                                    <addExclusions>org.apache.cxf:cxf-rt-databinding-aegis,org.apache.cxf:cxf-rt-javascript,org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-distribution-javadoc</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-distribution-manifest</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-cdi</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-jca</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-tracing-brave</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-tracing-micrometer</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-tracing-opentelemetry</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-integration-tracing-opentracing</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-bindings-coloc</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-bindings-corba</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-bindings-soap</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-bindings-xml</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-databinding-aegis</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-databinding-jaxb</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-features-clustering</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-features-throttling</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-frontend-js</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-frontend-simple</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-javascript</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-management</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-reactivestreams</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-reactor</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-rx</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-rx2</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-rx3</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-extension-search</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-http-sci</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-json-basic</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-mp-client</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-cors</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-http-signature</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-jose</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-jose-jaxrs</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-oauth2-saml</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-sso-oidc</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-sso-saml</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-security-xml</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-service-description</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-service-description-common-openapi</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-service-description-microprofile-openapi</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-service-description-openapi-v3</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-service-description-swagger-ui</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-rs-sse</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-security</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-security-saml</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-hc</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-hc5</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-jetty</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-netty-client</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-netty-server</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-http-undertow</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-jms</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-local</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-udp</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-transports-websocket</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-ws-addr</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-ws-eventing</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-ws-policy</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-rt-ws-transfer</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-spring-boot-autoconfigure</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-spring-boot-starter-jaxrs</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-spring-boot-starter-jaxws</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-testutils</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-common</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-corba</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-misctools</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-validator</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-wadlto-jaxrs</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-wsdlto-core</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-wsdlto-frontend-javascript</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.archetype:cxf-jaxrs-service</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.archetype:cxf-jaxws-javafirst</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.archetype:cxf-jaxws-wsdlfirst</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.ws-discovery:cxf-services-ws-discovery-api</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.ws-discovery:cxf-services-ws-discovery-service</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.wsn:cxf-services-wsn-api</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.wsn:cxf-services-wsn-core</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.wsn:cxf-services-wsn-osgi</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-client</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-common</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-service</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-war</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-x509-handlers</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
+                                </autogeneratedBomEntryTransformation>
+                                <autogeneratedBomEntryTransformation>
+                                    <gavPattern>org.apache.cxf.services.xkms:cxf-services-xkms-x509-repo-ldap</gavPattern>
+                                    <addExclusions>org.bouncycastle:bc-fips</addExclusions>
                                 </autogeneratedBomEntryTransformation>
                             </autogeneratedBomEntryTransformations>
                         </configuration>
