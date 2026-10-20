@@ -31,6 +31,12 @@
             <groupId>io.quarkiverse.cxf</groupId>
             <artifactId>quarkus-cxf-test-util-internal</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bc-fips</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

@@ -16,6 +16,12 @@
         <dependency>
             <groupId>io.quarkiverse.cxf</groupId>
             <artifactId>quarkus-cxf</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bc-fips</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -30,6 +36,12 @@
             <groupId>io.quarkiverse.cxf</groupId>
             <artifactId>quarkus-cxf-test-util-internal</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bc-fips</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -95,6 +107,12 @@
                     <!-- this profile tests with quarkus-cxf-bc-stub in place instead of real Bouncy Castle -->
                     <groupId>io.quarkiverse.cxf</groupId>
                     <artifactId>quarkus-cxf-rt-ws-security</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.bouncycastle</groupId>
+                            <artifactId>bc-fips</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
             </dependencies>
             <build>
@@ -185,6 +203,10 @@
                             <!-- This profile tests with real Bouncy Castle -->
                             <groupId>io.quarkiverse.cxf</groupId>
                             <artifactId>quarkus-cxf-bc-stub</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.bouncycastle</groupId>
+                            <artifactId>bc-fips</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
