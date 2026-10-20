@@ -62,6 +62,14 @@
         <dependency>
             <groupId>io.quarkiverse.cxf</groupId>
             <artifactId>quarkus-cxf-rt-ws-rm</artifactId>
+            <exclusions>
+                <!-- The fips profile of cxf-parent (activated by -Dfips.enabled) adds bc-fips to all CXF modules. -->
+                <!-- It would clash with quarkus-cxf-bc-stub. -->
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bc-fips</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
