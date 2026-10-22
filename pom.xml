@@ -504,6 +504,40 @@
             </modules>
         </profile>
         <profile>
+            <id>fips</id>
+            <activation>
+                <property>
+                    <name>fips</name>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- Set the Quarkus property fips.enabled through an env var. -->
+                        <!-- -Dfips.enabled would activate the fips profile of cxf-parent, which adds bc-fips. -->
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <configuration>
+                                <environmentVariables>
+                                    <FIPS_ENABLED>true</FIPS_ENABLED>
+                                </environmentVariables>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <environmentVariables>
+                                    <FIPS_ENABLED>true</FIPS_ENABLED>
+                                </environmentVariables>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
             <id>format</id>
             <build>
                 <plugins>
